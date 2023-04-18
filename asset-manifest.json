@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.ee21f0c7.css",
-    "main.js": "/static/js/main.53e2ef78.js",
-    "static/media/logo.svg": "/static/media/logo.61a176b03b030d4af7e23f340ef55ec4.svg",
-    "index.html": "/index.html",
-    "main.ee21f0c7.css.map": "/static/css/main.ee21f0c7.css.map",
-    "main.53e2ef78.js.map": "/static/js/main.53e2ef78.js.map"
+    "main.css": "/BgJw.github.io/static/css/main.c4a1d271.css",
+    "main.js": "/BgJw.github.io/static/js/main.4424fc19.js",
+    "static/media/logo.svg": "/BgJw.github.io/static/media/logo.61a176b03b030d4af7e23f340ef55ec4.svg",
+    "index.html": "/BgJw.github.io/index.html",
+    "main.c4a1d271.css.map": "/BgJw.github.io/static/css/main.c4a1d271.css.map",
+    "main.4424fc19.js.map": "/BgJw.github.io/static/js/main.4424fc19.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee21f0c7.css",
-    "static/js/main.53e2ef78.js"
+    "static/css/main.c4a1d271.css",
+    "static/js/main.4424fc19.js"
   ]
 }
