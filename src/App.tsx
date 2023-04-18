@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -30,7 +30,7 @@ useEffect(()=> {
 
   return (
     <div className="app">
-      <BrowserRouter>
+      <HashRouter  >
         
         <Header 
           setShowSidebar={setShowSidebar}
@@ -39,7 +39,7 @@ useEffect(()=> {
         
         {showSidebar && <Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar}  /> }
 
-        <Routes>
+        <Routes >
           <Route element={<HomePage />} path='/' />
           <Route element={<SingleProduct />} path={'/product/:productId'} />
           <Route element={<FilterPage />} path={'/filter'} />
@@ -51,7 +51,7 @@ useEffect(()=> {
         
         <Footer />
         
-      </BrowserRouter>
+      </HashRouter>
 
     </div>
   );
