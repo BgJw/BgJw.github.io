@@ -1,0 +1,152 @@
+.header {
+    display: grid;
+    grid-template-areas:
+        "burger logo options";
+    grid-template-columns: 1fr 240px 1fr;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
+    height: 70px;
+    padding: 0 10px;
+
+
+    &__menu {
+        grid-area: burger;
+        background-image: url('../../assets/navigation/menu_FILL0_wght400_GRAD0_opsz48.png');
+        background-color: white;
+        -webkit-transition: background-image .5s;
+        -o-transition: background-image .5s;
+        transition: background-image .5s;
+        
+        &:hover{
+            background-image: url('../../assets/navigation/menu_open.png');
+        }
+    }
+
+    &__logo {
+        grid-area: logo;
+        text-align: center;
+
+        img{
+            -webkit-transition: -webkit-transform .4s;
+            transition: -webkit-transform .4s;
+            -o-transition: transform .4s;
+            transition: transform .4s;
+            transition: transform .4s, -webkit-transform .4s;
+        }
+        &.hide img{
+
+                -webkit-transform: translateX(-500px);
+                    -ms-transform: translateX(-500px);
+                        transform: translateX(-500px);
+        }
+        &.show img{
+                -webkit-transform: translateX(0px);
+                    -ms-transform: translateX(0px);
+                        transform: translateX(0px);
+        }
+
+    }
+
+    &__options {
+        grid-area: options;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        gap: 25px;
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+
+        .compare-link,
+        .favorites-link,
+        .cart-link,
+        .search-button {
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -10px;
+                width: 0;
+                border-bottom: 1px solid #ff6163;
+                -webkit-transition: all .7s;
+                -o-transition: all .7s;
+                transition: all .7s;
+            }
+
+            &:hover:before {
+                width: 100%;
+            }
+        }
+
+        a {
+            position: relative;
+            width: 25px;
+            height: 25px;
+            background-size: 25px;
+            background-repeat: no-repeat;
+        }
+
+        .search-button {
+            background-image: url('../../assets/navigation/search_FILL0_wght400_GRAD0_opsz48.png');
+        }
+
+        .compare-link {
+            background-image: url('../../assets/navigation/compareOf.png');
+        }
+
+        .favorites-link {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            color: black;
+
+            font-size: 35px;
+
+            span {
+                right: -11px;
+            }
+        }
+
+        .cart-link {
+            background-image: url('../../assets/navigation/shopping_cart_FILL0_wght400_GRAD0_opsz48.png');
+        }
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 800px) {
+
+    .header {
+
+        &__menu{
+            margin-left: 10px;
+        }
+        &__options {
+
+            background-color: rgba(255, 255, 255, 0.941);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            height: 80px;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            z-index: 10;
+            opacity: 1;
+
+            border-top: 1px solid rgba(132, 130, 130, 0.119);
+        }
+    }
+}

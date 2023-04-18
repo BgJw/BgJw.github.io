@@ -1,0 +1,164 @@
+
+.carts {
+    // ALL CARTS 
+    display: grid;
+    grid-template-columns: 70% 30%;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    margin: 20px 0;
+
+
+    p, span {
+        font-weight: 100;
+    }
+    .cart {
+
+        // SINGLE CART 
+        &__product {
+            display: grid;
+            grid-template-columns: 130px auto auto 90px 35px;
+            grid-template-rows: 200px;
+            grid-column-gap: 20px;
+
+            .img {
+                width: 100%;
+                height: 90%;
+                border-radius: 5px;
+            }
+
+            .information {
+                display: grid;
+
+                p {
+                    font-size: 16px;
+                }
+            }
+
+            .selectSize {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: right;
+                -ms-flex-pack: right;
+                justify-content: right;
+            }
+
+            .additionalOptions {
+                display: grid;
+                grid-template-rows: repeat(2, 30px);
+                grid-row-gap: 10px;
+
+                button {
+                    background-size: 20px;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 16px;
+
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-color: transparent;
+                }
+
+                .bttnCartOff {
+                    background-image: url('../../assets//navigation/delete_cart.png');
+
+                    -webkit-transition: background-image 1s;
+
+                    -o-transition: background-image 1s;
+
+                    transition: background-image 1s;
+
+                    &:hover {
+                        background-image: url('../../assets//navigation/delete__sweep.png');
+                    }
+                }
+
+                .bttnFavoritesOn {
+                    -webkit-transform: scale(1.5);
+                    -ms-transform: scale(1.5);
+                    transform: scale(1.5);
+                }
+
+                .bttnFavoritesOff {
+                    -webkit-transform: scale(1.2);
+                    -ms-transform: scale(1.2);
+                    transform: scale(1.2);
+                }
+            }
+
+            .totalPrice {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+
+                span {
+                    font-weight: 400;
+                    font-size: 22px;
+                    letter-spacing: 2px;
+                }
+            }
+
+
+        }
+    }
+
+
+}
+
+@media screen and (max-width: 1024px) {
+    .carts{
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 650px){
+    .carts {
+        .cart{
+            &__product{
+                grid-template-columns: 30% 40% 20%;
+                grid-template-rows: 100px 100px;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                margin-bottom: 20px;
+                grid-template-areas:  
+                    "img title bttn"  
+                    "img size price";
+                a{
+                    grid-area: img;
+                    
+                }
+                .information{
+                    grid-area: title;
+                    display: block;
+                    p{
+                        font-size: 14px;
+                    }
+                }
+                .selectSize{
+                    grid-area: size;
+                    -webkit-box-pack: left;
+                        -ms-flex-pack: left;
+                            justify-content: left;
+                            padding-left: 10px;
+                            
+                }
+                .totalPrice{
+                    grid-area: price;
+                }
+                .additionalOptions{
+                    grid-area: bttn;
+                    -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                            justify-content: center;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,254 @@
+.modal {
+    position: fixed;
+
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: grid;
+    background-color: black;
+    z-index: 90;
+
+    &__bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        z-index: 0;
+
+
+        -webkit-filter: blur(45px);
+
+
+        filter: blur(45px);
+        -webkit-transition: background-image 1.2s ease-in-out;
+        -o-transition: background-image 1.2s ease-in-out;
+        transition: background-image 1.2s ease-in-out;
+    }
+
+    &__close {
+        position: absolute;
+        right: 50px;
+        top: 50px;
+        z-index: 12;
+
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+        border-radius: 50%;
+
+        background-color: #FF6163;
+        color: white;
+
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+
+        transition: -webkit-transform 0.3s ease-in-out;
+
+        -o-transition: transform 0.3s ease-in-out;
+
+        transition: transform 0.3s ease-in-out;
+
+        transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+
+        &:hover {
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+        }
+    }
+
+    &__item {
+        display: grid;
+        grid-template-columns: 400px;
+        margin: 0 auto;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        z-index: 10;
+        overflow: hidden;
+
+        &-img {
+
+            -webkit-transition: all 1s;
+
+            -o-transition: all 1s;
+
+            transition: all 1s;
+            width: 100%;
+            height: 400px;
+            -o-object-fit: contain;
+            object-fit: contain;
+        }
+    }
+
+    &__carousel {
+        display: grid;
+        grid-auto-flow: column;
+        overflow: auto;
+        grid-template-rows: 130px;
+        
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -ms-flex-line-pack: distribute;
+                align-content: space-around;
+        margin-bottom: 10px;
+        z-index: 12;
+
+        &__items {
+
+            width: 100%;
+            height: 100%;
+            border: 3px solid #FF6163;
+            border-radius: 5px;
+            padding: 2px;
+            cursor: pointer;
+
+            &-img {
+                width: 100%;
+                height: 100%;
+            }
+
+            &-activeImg {
+                width: 10px;
+                height: 10px;
+                margin: 0 auto;
+                margin-top: 10px;
+                background-color: white;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+.animateOn {
+    -webkit-animation-name: animationOn;
+    animation-name: animationOn;
+    -webkit-animation-duration: 500ms;
+    animation-duration: 500ms;
+}
+
+.animateOff {
+    -webkit-animation-name: animationOff;
+    animation-name: animationOff;
+    -webkit-animation-duration: 500ms;
+    animation-duration: 500ms;
+}
+
+@-webkit-keyframes animationOn {
+    0% {
+        -webkit-transform: translateX(-400px);
+        transform: translateX(-400px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+}
+
+@keyframes animationOn {
+    0% {
+        -webkit-transform: translateX(-400px);
+        transform: translateX(-400px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+}
+
+@-webkit-keyframes animationOff {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+    100% {
+        -webkit-transform: translateX(400px);
+        transform: translateX(400px);
+    }
+
+}
+
+@keyframes animationOff {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+    100% {
+        -webkit-transform: translateX(400px);
+        transform: translateX(400px);
+    }
+
+}
+
+@media screen and (max-width: 1400px) {
+    .modal {
+
+        &__item {
+            grid-template-columns: 400px;
+
+            &-img {
+                height: 400px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .modal {
+
+        &__carousel {
+                grid-template-rows: 100px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .modal {
+        &__carousel {
+            grid-template-rows: 60px;
+    }
+
+    }
+}
+
+
+@media screen and (max-width: 426px) {
+    .modal {
+
+        &__item {
+            grid-template-columns: 1fr;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+
+            &-img {
+                height: 350px;
+            }
+        }
+
+        &__carousel {
+            display: none;
+        }
+
+        &__close {
+            right: 30px;
+            top: 30px;
+            width: 40px;
+            height: 40px;
+            font-size: .9rem;
+        }
+    }
+}

@@ -1,0 +1,206 @@
+.sidebar{
+    
+    &.show{
+        -webkit-animation: show .5s forwards;
+                animation: show .5s forwards;
+    }
+    &.hide{
+        -webkit-animation: hide .5s forwards;
+                animation: hide .5s forwards;
+    }
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 100%;
+    z-index: 20;
+    
+    background-color: rgba(109, 109, 109, 0.238);
+    white-space: nowrap;
+    
+    display: grid;
+    grid-template-columns: 40% 50px;
+    -webkit-column-gap: 20px;
+       -moz-column-gap: 20px;
+            column-gap: 20px;
+            
+    &__close{
+        width: 45px;
+        height: 45px;
+        margin-top: 20px;
+        border-radius: 50%;
+        font-size: 18px;
+        
+        background-color:#ff6163;
+        color: white;
+
+        -webkit-transition: -webkit-transform .4s;
+
+        transition: -webkit-transform .4s;
+
+        -o-transition: transform .4s;
+
+        transition: transform .4s;
+
+        transition: transform .4s, -webkit-transform .4s;
+        
+        &:hover{
+            -webkit-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                    transform: scale(1.1);
+        }
+    }
+    &__wrap{
+        display: grid;
+        grid-template-rows: 70px auto;
+        padding: 20px;
+        padding-top: 0;
+        background-color: rgb(255, 255, 255);
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        header{
+
+            padding: 10px;
+
+            img{
+                -webkit-transition: -webkit-transform 1s;
+                transition: -webkit-transform 1s;
+                -o-transition: transform 1s;
+                transition: transform 1s;
+                transition: transform 1s, -webkit-transform 1s;
+                
+            }
+            &.show img{
+                        -webkit-animation: logo .4s forwards;
+                                animation: logo .4s forwards
+            }
+
+        }
+    
+        main ul{
+            display: grid;
+            gap: 20px;
+            
+            li{
+                font-size: 18px;
+                position: relative;
+                width: 100%;
+                cursor: pointer;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -5px;
+                    width: 0;
+                    border-bottom: 1px solid #ff6163;
+                    -webkit-transition: all .7s;
+                    -o-transition: all .7s;
+                    transition: all .7s;
+                }
+    
+                &:hover:before {
+                    width: 100%;
+                }
+                
+                a{ color: black; display: -webkit-box; display: -ms-flexbox; display: flex; width: 100%; }
+        }
+        }
+
+        footer{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 20px auto;
+            row-gap: 20px;
+
+            .map{
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+            }
+        }
+    }
+}
+
+
+@-webkit-keyframes show {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes show {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+@-webkit-keyframes hide {
+    from{
+        width: 100%;
+    }
+    to{
+        width: 0;
+    }
+}
+@keyframes hide {
+    from{
+        width: 100%;
+    }
+    to{
+        width: 0;
+    }
+}
+@-webkit-keyframes logo {
+    from{
+        -webkit-transform: translateX(600px);
+                transform: translateX(600px);
+    }
+    to{
+        -webkit-transform: translateX(0px);
+                transform: translateX(0px);
+    }
+}
+@keyframes logo {
+    from{
+        -webkit-transform: translateX(600px);
+                transform: translateX(600px);
+    }
+    to{
+        -webkit-transform: translateX(0px);
+                transform: translateX(0px);
+    }
+}
+
+
+@media screen and (max-width: 760px){
+    .sidebar{
+        grid-template-columns: 101%;
+        &__wrap{
+            header img{
+                height: 40px;
+            }
+        }
+        &__close{
+            position: absolute;
+            top: 0;
+            right: 10px;
+            margin-top: 10px;
+            
+            background-color: white;
+            color: black;
+            font-size: 20px;
+        }
+    }
+}
