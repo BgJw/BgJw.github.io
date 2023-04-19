@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -17,6 +17,7 @@ import { isCheckLocalStorage } from './Slices/BadgeSlice';
 
 import './app.scss';
 import Sidebar from './components/Sidebar/Sidebar';
+import Routes from './routes';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,35 +26,34 @@ function App() {
 useEffect(()=> {
   dispatch(fetchClothesForMan());
   dispatch(fetchClothesForWoman());
-  dispatch(isCheckLocalStorage());
+  dispatch(isCheckLocalStorage()); 
 }, []);
 
   return (
+
     <div className="app">
-      <HashRouter  >
         
         <Header 
           setShowSidebar={setShowSidebar}
           showSidebar={showSidebar} 
-        />
-        
+        />       
         {showSidebar && <Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar}  /> }
 
-        <Routes >
-          <Route element={<HomePage />} path='/' />
+        {/* <Routes >
+          <Route element={<HomePage />} path={'/'} />
           <Route element={<SingleProduct />} path={'/product/:productId'} />
           <Route element={<FilterPage />} path={'/filter'} />
           <Route element={<ComparePage />} path={'/compare'} />
           <Route element={<FavoritesPage />} path={'/favorites'}/>
           <Route element={<CartPage />} path={'/cart'}/>
           <Route element={<NotFoundPage />} path={'*'} />
-        </Routes>
-        
+        </Routes> */}
+        <Routes />
+
         <Footer />
         
-      </HashRouter>
-
     </div>
+
   );
 }
 
