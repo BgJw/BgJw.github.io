@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../Hooks/useDispatch_Selector';
 import Badge from '../Badge/Badge';
 import './Header.scss';
@@ -23,31 +23,31 @@ const Header = ({setShowSidebar, showSidebar}: IProps) => {
                     />
 
                 {/* navigator logo */}
-                <Link to="/" className={showSidebar ? 'header__logo hide':'header__logo show'}>
+                <NavLink to="/" className={showSidebar ? 'header__logo hide':'header__logo show'}>
                     <img src={logo} alt="O stories" />
-                </Link>
+                </NavLink>
 
                 {/* navigator options start */}
                 <div className='header__options'>
 
                     {/* navigation search */}
-                    <Link to='/filter' className='search-button bttn__link' />
+                    <NavLink to='/filter' className='search-button bttn__link' />
 
                     {/* navigation compare */}
-                    <Link to='/compare' className='compare-link'>
+                    <NavLink to='/compare' className='compare-link'>
                         <Badge amount={compare.amount} />
-                    </Link>
+                    </NavLink>
 
                     {/* navigation favorites */}
-                    <Link to="/favorites" className='favorites-link'>
+                    <NavLink to="/favorites" className='favorites-link'>
                         &#9825;
                         <Badge amount={favorites.amount} />
-                    </Link>
+                    </NavLink>
 
                     {/* navigation cart */}
-                    <Link to="/cart" className='cart-link'  >
+                    <NavLink to="/cart" className='cart-link'  >
                         <Badge amount={cart.amount} />
-                    </Link>
+                    </NavLink>
                 </div>
                 {/* navigation  end  */}
             </header>

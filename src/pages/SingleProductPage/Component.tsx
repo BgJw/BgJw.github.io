@@ -15,17 +15,14 @@ const Component = ({ singleProduct }: IProps) => {
     return (
         <>
             <Breadcrumbs />
-            {/* start photo element */}
             <div className='wrap'>
+            {/* start photo element */}
                 <div className='wrap__photo'>
-                    {
-                        <MyButtons
-                            type={BadgeType.compare}
-                            product={singleProduct}
-                        />
-                    }
-                    <img className='wrap__photo-img' src={singleProduct.urls.regular}
-                        alt={singleProduct.alt_description} />
+                    <MyButtons
+                        type={BadgeType.compare}
+                        product={singleProduct}
+                    />
+                    <img className='wrap__photo-img' src={singleProduct.urls.regular} alt={singleProduct.alt_description} />
                 </div>
                 {/* End photo element */}
 
@@ -54,16 +51,12 @@ const Component = ({ singleProduct }: IProps) => {
                             product={singleProduct}
                             sizeForCart={size}
                         />
-                        <div className='wrap__information__buy-favorites'>
-                            {
-                                <MyButtons
-                                    on='&#9825;'
-                                    off='&#10084;'
-                                    type={BadgeType.favorite}
-                                    product={singleProduct}
-                                />
-                            }
-                        </div>
+                        <MyButtons
+                            on='&#9825;'
+                            off='&#10084;'
+                            type={BadgeType.favorite}
+                            product={singleProduct}
+                        />
                     </div>
                     <hr />
                     {/* Product characteristic */}

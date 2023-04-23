@@ -4,8 +4,8 @@
         "burger logo options";
     grid-template-columns: 1fr 240px 1fr;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 
     height: 70px;
     padding: 0 10px;
@@ -18,8 +18,8 @@
         -webkit-transition: background-image .5s;
         -o-transition: background-image .5s;
         transition: background-image .5s;
-        
-        &:hover{
+
+        &:hover {
             background-image: url('../../assets/navigation/menu_open.png');
         }
     }
@@ -28,23 +28,25 @@
         grid-area: logo;
         text-align: center;
 
-        img{
+        img {
             -webkit-transition: -webkit-transform .4s;
             transition: -webkit-transform .4s;
             -o-transition: transform .4s;
             transition: transform .4s;
             transition: transform .4s, -webkit-transform .4s;
         }
-        &.hide img{
 
-                -webkit-transform: translateX(-500px);
-                    -ms-transform: translateX(-500px);
-                        transform: translateX(-500px);
+        &.hide img {
+
+            -webkit-transform: translateX(-500px);
+            -ms-transform: translateX(-500px);
+            transform: translateX(-500px);
         }
-        &.show img{
-                -webkit-transform: translateX(0px);
-                    -ms-transform: translateX(0px);
-                        transform: translateX(0px);
+
+        &.show img {
+            -webkit-transform: translateX(0px);
+            -ms-transform: translateX(0px);
+            transform: translateX(0px);
         }
 
     }
@@ -56,13 +58,14 @@
         display: flex;
         gap: 25px;
         -webkit-box-pack: end;
-            -ms-flex-pack: end;
-                justify-content: flex-end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
 
         .compare-link,
         .favorites-link,
         .cart-link,
         .search-button {
+
             &:before {
                 content: '';
                 position: absolute;
@@ -86,6 +89,13 @@
             height: 25px;
             background-size: 25px;
             background-repeat: no-repeat;
+
+
+            &.active {
+                &:before {
+                    width: 100%;
+                }
+            }
         }
 
         .search-button {
@@ -101,8 +111,8 @@
             display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
             color: black;
 
             font-size: 35px;
@@ -121,14 +131,14 @@
 
 
 
-
 @media screen and (max-width: 800px) {
 
     .header {
 
-        &__menu{
+        &__menu {
             margin-left: 10px;
         }
+
         &__options {
 
             background-color: rgba(255, 255, 255, 0.941);
@@ -139,14 +149,43 @@
 
             height: 80px;
             -ms-flex-pack: distribute;
-                justify-content: space-around;
+            justify-content: space-around;
             -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
             z-index: 10;
             opacity: 1;
 
             border-top: 1px solid rgba(132, 130, 130, 0.119);
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .header {
+        
+        grid-template-columns: 1fr 180px 1fr;
+        
+        &__logo {
+
+            &.hide img {
+                -webkit-transform: none;
+                    -ms-transform: none;
+                        transform: none;
+            }
+
+            &.show img {
+               -webkit-transform: none;
+                   -ms-transform: none;
+                       transform: none;
+            }
+
+            img {
+                -webkit-transition: none;
+                -o-transition: none;
+                transition: none;
+                width: 100%;
+            }
         }
     }
 }
