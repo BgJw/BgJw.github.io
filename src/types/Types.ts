@@ -54,9 +54,9 @@ export interface IPreviewGallerySlice {
     clothesList: IClothesService[],
     isOpenModal: boolean,
     singleClothesModal: IClothesService,
+    index: number,
     status: Status,
 }
-
 
 
 // types for All Products 

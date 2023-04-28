@@ -10,7 +10,6 @@ const PreviewGallery = () => {
 
     const dispatch = useAppDispatch();
     const { clothesList, isOpenModal, status } = useAppSelector(state => state.PreviewGallerySlice);
-    const [scrollMove, setScrollMove] = useState(false);
     
     const divRef = useRef<HTMLDivElement>(null);
     let interval: ReturnType<typeof setInterval>;
@@ -19,7 +18,6 @@ const PreviewGallery = () => {
 
     const scrollGallery = useCallback((): void => {
 
-        if (!scrollMove) {
             const el = divRef.current as Element;
 
             if (el) {
@@ -33,22 +31,17 @@ const PreviewGallery = () => {
                     if (right <= 0) {
                         left = right;
                     }
-                }
             }
         }
     }, [left, right]);
 
-
+    
     useEffect(() => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
         interval = setInterval(scrollGallery, 30);
 
         return () => clearInterval(interval);
-    }, [scrollMove])
-
-    isOpenModal ?
-        document.body.style.overflow = 'hidden' :
-        document.body.style.overflow = '';
+    }, [])
 
     return (
         <>
@@ -57,24 +50,23 @@ const PreviewGallery = () => {
             {status === Status.error && <p> pls reload </p>}
             {status === Status.idle &&
                 <>
-                    <div className='gallery'
+                    <div 
+                        className='gallery'
                         ref={divRef}
-                        onMouseMove={() => setScrollMove(true)}
-                        onMouseLeave={() => setScrollMove(false)}
                     >
                         <div className='gallery__panel' >
                             {
-                                clothesList.map(photo => (
+                                clothesList.map((photo, i) => (
                                     <div
                                         key={photo.id} 
-                                        className='gallery__panel__item'>
-                                        
+                                        className='gallery__panel__item'
+                                    >
                                         <img 
-                                            onMouseMove={() => clearInterval(interval)}
                                             className='gallery__panel__item-img'
                                             onClick={() => {
                                                 dispatch(showModal());
-                                                dispatch(setModalMainPhoto(photo))
+                                                dispatch(setModalMainPhoto(i));
+
                                             }}
                                             src={photo.urls.thumb}
                                             alt={photo.alt_description} 

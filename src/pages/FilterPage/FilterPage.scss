@@ -490,8 +490,7 @@
 }
 @media screen and (max-width: 410px) {
     .filter{
-        &__options{
-            .input{
+        &__options .input{
 
                 &__label{
                     font-size: 8px;
@@ -501,6 +500,4 @@
                 }
             }
         }
-        }
-
 }

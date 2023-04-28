@@ -15,6 +15,7 @@ const initialState: IPreviewGallerySlice = {
     clothesList: [],
     isOpenModal: false,
     singleClothesModal: {} as IClothesService,
+    index: 0,
     status: Status.idle
 }
 
@@ -24,12 +25,32 @@ export const PreviewGallerySlice = createSlice({
     reducers: {
         hideModal: ( state ) => {
             state.isOpenModal = false;
+            document.body.style.overflow = '';
         },
         showModal: ( state ) => {
             state.isOpenModal = true;
+            document.body.style.overflow = 'hidden';
         },
-        setModalMainPhoto: (state, action: PayloadAction<IClothesService>) => {
-            state.singleClothesModal = action.payload;
+        setModalMainPhoto: (state, action: PayloadAction<number>) => {
+            state.index = action.payload;
+            state.singleClothesModal = state.clothesList[state.index];
+        },
+        onChangeIndex: (state, action: PayloadAction<string>) => {
+            if (action.payload === '+') {
+                if (state.index < state.clothesList.length - 1) {
+                    state.index += 1;
+                }
+                else {
+                    state.index = 0;
+                }
+            }
+            if (action.payload === '-') {
+                if (state.index > 0) {
+                    state.index -= 1;
+                } else {
+                    state.index = state.clothesList.length - 1;
+                }
+            }
         }
     },
     extraReducers(builder) {
@@ -52,6 +73,7 @@ export const {
                 hideModal, 
                 showModal, 
                 setModalMainPhoto,
+                onChangeIndex,
             } = PreviewGallerySlice.actions;
 
 export default PreviewGallerySlice.reducer;
