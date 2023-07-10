@@ -3,10 +3,11 @@ import { BadgeType, IClothesService } from '../../types/Types';
 import MyButtons from '../../components/MyButtons/MyButtons';
 
 interface IProps {
-    el: IClothesService
+    el: IClothesService,
+    i: number
 };
 
-const Component = ({ el }: IProps) => {
+const Component = ({ el, i }: IProps) => {
 
     return (
         <div className='compare'>
@@ -15,28 +16,22 @@ const Component = ({ el }: IProps) => {
             </Link>
             <div className='compare__information'>
                 <p className='compare__information-p'>{el.alt_description}</p>
-                <div className='compare__information-feather'>
-
-                    <div><small>price</small> <p>{el.price} $</p></div>
-                    <div><small>material</small> <p> {el.material}</p></div>
-                    <div><small>country</small> <p> {el.country}</p></div>
-
-                </div>
+               
                 <div className='compare__information-bttn'>
-                    {
                         <MyButtons
                             type={BadgeType.compare}
                             product={el}
                         />
-                    }
-                    {
                         <MyButtons
-                            on='&#9825;'
-                            off='&#10084;'
                             type={BadgeType.favorite}
                             product={el}
                         />
-                    }
+                </div>
+                <div className='compare__information-feather'>
+                    <small>{i === 0 && 'Price'}</small> <p>{el.price} $</p>
+                    <small>{i === 0 && 'Material'}</small> <p> {el.material}</p>
+                    <small>{i === 0 && 'Country'}</small> <p> {el.country}</p>
+
                 </div>
             </div>
         </div>

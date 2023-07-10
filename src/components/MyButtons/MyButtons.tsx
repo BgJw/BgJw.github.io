@@ -16,7 +16,7 @@ const MyButtons = ({ on, off, type, product, sizeForCart }: IProps) => {
 
     const style = () => { 
         if(type === BadgeType.favorite){
-            return !badge ? 'bttnFavoritesOn' : 'bttnFavoritesOff';
+            return !badge ? 'bttn__link bttnFavoritesOn' : 'bttn__link bttnFavoritesOff';
         }
         if(type === BadgeType.compare){
             return !badge ? 'bttn__link bttnCompareOff' : 'bttn__link bttnCompareOn'
@@ -37,7 +37,7 @@ const MyButtons = ({ on, off, type, product, sizeForCart }: IProps) => {
     return (
         !badge?
             <button 
-                className={style()}
+                className={ style() }
                 onClick={ () => {
                     dispatch(incrementBadge(type))
                     dispatch(addDataBadge({name: type, data: {...product, size: sizeForCart} as IClothesService}))
@@ -48,7 +48,7 @@ const MyButtons = ({ on, off, type, product, sizeForCart }: IProps) => {
             </button>
         :
             <button 
-                className={ style()}
+                className={ style() }
                 onClick={ () => {
                     dispatch(decrementBadge(type))
                     dispatch(removeDataBadge({name: type, data: product}))

@@ -76,8 +76,6 @@ const Content = ({ product,setPrice, totalPrice }: IProps) => {
                 onClick={ (e) => removeEL(e, id)}>
                 <>
                     <MyButtons
-                        on='&#9825;'
-                        off='&#10084;'
                         type={BadgeType.favorite}
                         product={product}
                     />

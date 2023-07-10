@@ -40,7 +40,6 @@ const Header = ({setShowSidebar, showSidebar}: IProps) => {
 
                     {/* navigation favorites */}
                     <NavLink to="/favorites" className='favorites-link'>
-                        &#9825;
                         <Badge amount={favorites.amount} />
                     </NavLink>
 

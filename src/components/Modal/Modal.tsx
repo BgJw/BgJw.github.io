@@ -34,8 +34,9 @@ const Modal = () => {
         return () => document.removeEventListener('keydown', onChangeModalPhoto);
     }, []);
 
-    useEffect(() => { 
-        if (singleClothesModal.id !== clothesList[index].id) animation() }, [index]);
+    useEffect(() => {  if (singleClothesModal.id !== clothesList[index].id) animation() }, [index]);
+
+
     return (
         <div className='modal'>
             <button className='carousel next' onClick={() => dispatch(onChangeIndex('+'))} >
@@ -70,7 +71,7 @@ const Modal = () => {
                             />
                             {
                                 singleClothesModal.id === carousel.id
-                                && <div className='modal__carousel__items-activeImg' />
+                                && <span className='modal__carousel__items-activeImg' />
                             }
                         </div>
                     ))

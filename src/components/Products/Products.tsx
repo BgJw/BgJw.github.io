@@ -14,8 +14,6 @@ const Products = ({product}: IProduct) => {
 
             <div className='product__img'>
                 <MyButtons
-                    on='&#9825;'
-                    off='&#10084;'
                     type={BadgeType.favorite}
                     product={product} 
                 />

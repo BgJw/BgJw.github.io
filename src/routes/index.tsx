@@ -9,7 +9,7 @@ import SingleProduct from "../pages/SingleProductPage/SingleProduct";
 
 const Routes = () => {
     const routes = useRoutes([
-        { path: '/*', element: <HomePage /> },
+        { path: '/', element: <HomePage /> },
         { path: '/compare', element: <ComparePage /> },
         { path: '/favorites',element: <FavoritesPage /> },
         { path: '/cart', element: <CartPage /> },

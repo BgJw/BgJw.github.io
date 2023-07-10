@@ -1,4 +1,8 @@
 .priceWrap {
+    position: -webkit-sticky;
+    position: sticky;
+    right: 0;
+    top: 15px;
     display: grid;
     grid-template-rows: 40px 40px 75px 60px;
     row-gap: 10px;
@@ -8,7 +12,7 @@
 
     align-content: stretch;
 
-    background-color: rgb(245, 244, 244);
+    background-color: rgb(234, 231, 231);
     border-radius: 10px;
 
     &__section {
@@ -92,7 +96,10 @@
 @media screen and (max-width: 1024px) {
     .priceWrap{
         max-height: none;
-
+        border-radius: 0;
+        &__bttn{
+            border-radius: 0;
+        }
         &__gift{
             grid-template-columns: 100px 1fr;
         }

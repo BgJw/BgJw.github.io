@@ -5,9 +5,7 @@ interface IProps {
 }
 
 const Badge = ({amount}: IProps) => {
-    return (
-        <span className='badge'>{amount > 0 && amount}</span>
-    );
+    return <span className='badge'>{amount > 0 && amount} </span>
 };
 
 export default Badge;

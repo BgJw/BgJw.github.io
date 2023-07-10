@@ -38,7 +38,7 @@ const CartPage = () => {
                 </div>
                 :
                 // if cart is empty
-                <span className="pageEmpty">Cart list is empty</span>
+                <h3 className="pageEmpty">Cart list is empty</h3>
             }
         </>
     );

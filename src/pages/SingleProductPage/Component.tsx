@@ -52,8 +52,6 @@ const Component = ({ singleProduct }: IProps) => {
                             sizeForCart={size}
                         />
                         <MyButtons
-                            on='&#9825;'
-                            off='&#10084;'
                             type={BadgeType.favorite}
                             product={singleProduct}
                         />

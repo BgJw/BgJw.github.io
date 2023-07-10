@@ -27,8 +27,6 @@ const FavoritesPage = () => {
                     {favorites.data.map(el => (
                         <div key={el.id} className='favorites__content'>
                             <MyButtons
-                                on='&#9825;'
-                                off='&#10084;'
                                 type={BadgeType.favorite}
                                 product={el}
                             />

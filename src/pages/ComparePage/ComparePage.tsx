@@ -17,8 +17,8 @@ const ComparePage = () => {
             {
                 compare.data.length ?
                     <div className='container'>
-{                        compare.data.map(el => (
-                        <Component el={el} key={el.id} />
+{                        compare.data.map((el, i) => (
+                        <Component el={el} key={el.id} i={i}/>
                         ))}
                     </div>
                     :

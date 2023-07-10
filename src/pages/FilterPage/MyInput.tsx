@@ -11,7 +11,7 @@ const MyInput = ({ name, data, filterOption, setFilter }: IProps) => {
 
     type key = keyof typeof filterOption;
 
-    const isCheck = (e: { target: HTMLInputElement; }, name: string) => {
+    const isCheck = (e: { target: HTMLInputElement }, name: string) => {
 
         let filterName = filterOption[name as key] as string[];
         

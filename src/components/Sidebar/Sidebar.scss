@@ -40,11 +40,7 @@
 
         -webkit-transition: -webkit-transform .4s;
 
-        transition: -webkit-transform .4s;
-
         -o-transition: transform .4s;
-
-        transition: transform .4s;
 
         transition: transform .4s, -webkit-transform .4s;
 
@@ -78,25 +74,18 @@
             }
         }
         header {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-
-            img {
-                -webkit-transition: -webkit-transform 1s;
-                transition: -webkit-transform 1s;
-                -o-transition: transform 1s;
-                transition: transform 1s;
-                transition: transform 1s, -webkit-transform 1s;
-
-            }
+            display: grid;
+            -ms-flex-line-pack: center;
+                align-content: center;
+                
 
             &.show img {
                 -webkit-animation: logo .4s forwards;
-                animation: logo .4s forwards
+                animation: logo .4s forwards;
+            }
+            &.hide img {
+                -webkit-animation: unlogo .4s forwards;
+                animation: unlogo .4s forwards;
             }
 
         }
@@ -105,6 +94,9 @@
             
          ul {
             display: grid;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             row-gap: 20px;
 
             li {
@@ -113,29 +105,38 @@
                 width: 100%;
 
                 cursor: pointer;
+                // &:before {
+                //     content: '';
+                //     position: absolute;
+                //     left: 0;
+                //     bottom: -5px;
+                //     width: 0;
+                //     border-bottom: 1px solid #ff6163;
+                //     -webkit-transition: all .7s;
+                //     -o-transition: all .7s;
+                //     transition: all .7s;
+                // }
 
-                &:before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    bottom: -5px;
-                    width: 0;
-                    border-bottom: 1px solid #ff6163;
-                    -webkit-transition: all .7s;
-                    -o-transition: all .7s;
-                    transition: all .7s;
-                }
-
-                &:hover:before {
-                    width: 100%;
+                // &:hover:before {
+                //     width: 100%;
+                // }
+                &:hover{
+                    a{
+                        background-image: -o-linear-gradient(right, black, #ff6163, #ff6163);
+                        background-image: -webkit-gradient(linear, right top, left top, from(black), color-stop(#ff6163), to(#ff6163));
+                        background-image: linear-gradient(to left, black, #ff6163, #ff6163);
+                        -webkit-background-clip: text;
+                                background-clip: text;
+                        color: transparent;
+                    }
                 }
 
                 a {
                     color: black;
-                    display: -webkit-box;
-                    display: -ms-flexbox;
-                    display: flex;
-                    width: 100%;
+                    -webkit-transition: all .4s;
+                    -o-transition: all .4s;
+                    transition: all .4s;
+
                 }
             }
         }
@@ -222,6 +223,30 @@
         transform: translateX(0px);
     }
 }
+@-webkit-keyframes unlogo {
+    from {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+    to {
+        -webkit-transform: translateX(600px);
+        transform: translateX(600px);
+    }
+}
+@keyframes unlogo {
+    from {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+
+    to {
+        -webkit-transform: translateX(600px);
+        transform: translateX(600px);
+    }
+}
+
+
 @media screen and (min-height: 750px) {
     .sidebar{
         &__wrap main ul{
@@ -257,12 +282,13 @@
 @media screen and (max-width: 425px) {
     .sidebar {
 
-        &__wrap header {
-
-            &.show img {
-                -webkit-animation: none;
-                animation: none;
+        &__wrap{
+            header {
+                &.show img {
+                    -webkit-animation: none;
+                    animation: none;
+                }
             }
-        }
+    }
     }
 }

@@ -11,7 +11,6 @@ const Sizes = ({ setSize, size, product }: IProps) => {
     const { data } = useAppSelector(state => state.BadgeSlice.cart);
 
     const isCheckSize = (size: string) => {
-        if (setSize) {
             setSize(prev => {
                 if (!prev.includes(size)) {
                     return [...prev, size]
@@ -19,19 +18,17 @@ const Sizes = ({ setSize, size, product }: IProps) => {
                     return prev.length > 1 ? prev.filter(el => el !== size) : prev
                 }
             })
-        }
     };
 
 
-
+    const find = data.find(e => e.id === product);
 
     return (
         <div className="sizes">
-            {data.find(el => el.id === product) ?
-                ''
-                :
+            {
                 sizes.map(el => (
                     <button
+                        disabled={ Boolean(find) }
                         className={ size.includes(el) ? 'active' : ''}
                         onClick={() => isCheckSize(el)}
                         key={el}
@@ -39,7 +36,6 @@ const Sizes = ({ setSize, size, product }: IProps) => {
                         {el}
                     </button>
                 ))
-
             }
         </div>
     );

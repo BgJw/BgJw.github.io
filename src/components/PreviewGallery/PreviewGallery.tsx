@@ -16,10 +16,11 @@ const PreviewGallery = () => {
     let left = 0;
     let right = 0;
 
+    
     const scrollGallery = useCallback((): void => {
 
             const el = divRef.current as Element;
-
+            
             if (el) {
                 if (left <= el.scrollWidth - el.clientWidth) {
                     el.scrollTo({ top: 0, left: left });
@@ -47,7 +48,7 @@ const PreviewGallery = () => {
         <>
         
             {status === Status.loading && <Spinner />}
-            {status === Status.error && <p> pls reload </p>}
+            {status === Status.error && <p> pls reload page </p>}
             {status === Status.idle &&
                 <>
                     <div 

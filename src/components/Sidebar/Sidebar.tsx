@@ -31,10 +31,10 @@ const Sidebar = ({ setShowSidebar, showSidebar }: IProps) => {
     return (
         <aside
             className={style}
-            onClick={e => closeSidebar(e)}>
+            onClick={e => closeSidebar(e) }>
 
             <div className='sidebar__wrap'>
-                <header className={showSidebar ? 'show': ''}>
+                <header className={showSidebar ? 'show': 'hide'}>
                     <img src={logo} alt="O Stories" />
                 </header>
 
