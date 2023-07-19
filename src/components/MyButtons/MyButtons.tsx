@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useBadge } from '../../Hooks/useBadge';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { incrementBadge, decrementBadge, addDataBadge, removeDataBadge } from '../../Slices/BadgeSlice';
@@ -12,8 +12,9 @@ interface IProps{
     sizeForCart?: string[]
 }
 
-const MyButtons = ({ on, off, type, product, sizeForCart }: IProps) => {
-
+const MyButtons = memo( ({ on, off, type, product, sizeForCart }: IProps) => {
+    console.log('render button');
+    
     const style = () => { 
         if(type === BadgeType.favorite){
             return !badge ? 'bttn__link bttnFavoritesOn' : 'bttn__link bttnFavoritesOff';
@@ -26,7 +27,7 @@ const MyButtons = ({ on, off, type, product, sizeForCart }: IProps) => {
         }
     }
     const {badge, isCheckId, changeBadge} = useBadge();
-    const {data} = useAppSelector(state => state.BadgeSlice[type]);
+    const data = useAppSelector(state => state.BadgeSlice[type].data);
     const dispatch = useAppDispatch();    
     
 
@@ -58,6 +59,6 @@ const MyButtons = ({ on, off, type, product, sizeForCart }: IProps) => {
                 {off}
             </button>
     );
-};
+});
 
 export default MyButtons;

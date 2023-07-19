@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { checkPrice } from "../../../Helpers/checkPrice";
 
 import './PriceSection.scss';

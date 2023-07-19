@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { hideModal, onChangeIndex, setModalMainPhoto } from '../../Slices/PreviewGallerySlice';
 
@@ -9,35 +9,33 @@ import './Modal.scss';
 const Modal = () => {
 
     const dispatch = useAppDispatch();
-    const { singleClothesModal, index, clothesList } = useAppSelector(state => state.PreviewGallerySlice);
-    const [modalAnimation, setModalAnimation] = useState(true);
+    const { singleClothesModal, clothesList, isOpenModal } = useAppSelector(state => state.PreviewGallerySlice);
+
+
+    console.log('render Modal');
+    
 
 
 
-    const animation = () => {
+    const onChangeModalPhoto = useCallback((e: KeyboardEvent) => {
+        if (e.keyCode === 39 || e.keyCode === 68) { dispatch(onChangeIndex('+')) }
+        if (e.keyCode === 37 || e.keyCode === 65) { dispatch(onChangeIndex('-')) }
+    }, [dispatch]);
 
-            setModalAnimation(false);
-
-            setTimeout(() => {
-                dispatch(setModalMainPhoto(index));
-                setModalAnimation(true);
-            }, 250);
-    }
     useEffect(() => {
-        const onChangeModalPhoto = (e: KeyboardEvent) => {
-            if (e.keyCode === 39 || e.keyCode === 68) { dispatch(onChangeIndex('+')) }
-            if (e.keyCode === 37 || e.keyCode === 65) { dispatch(onChangeIndex('-')) }
-        };
 
         document.addEventListener('keydown', onChangeModalPhoto);
 
         return () => document.removeEventListener('keydown', onChangeModalPhoto);
     }, []);
 
-    useEffect(() => {  if (singleClothesModal.id !== clothesList[index].id) animation() }, [index]);
 
 
     return (
+        <>
+        {
+            isOpenModal &&
+
         <div className='modal'>
             <button className='carousel next' onClick={() => dispatch(onChangeIndex('+'))} >
                 &#8811;
@@ -55,7 +53,7 @@ const Modal = () => {
             />
             <div className='modal__item'>
                 <img
-                    className={modalAnimation ? 'modal__item-img animateOn' : 'modal__item-img animateOff'}
+                    className={'modal__item-img animateOn'}
                     src={singleClothesModal.urls.regular}
                     alt={singleClothesModal.alt_description} />
             </div>
@@ -67,11 +65,11 @@ const Modal = () => {
                                 className='modal__carousel__items-img'
                                 src={carousel.urls.thumb}
                                 alt={carousel.alt_description}
-                                onClick={() => dispatch(setModalMainPhoto(i))}
+                                onClick={() => singleClothesModal.id !== carousel.id && dispatch(setModalMainPhoto(i))}
                             />
                             {
                                 singleClothesModal.id === carousel.id
-                                && <span className='modal__carousel__items-activeImg' />
+                                    && <span className='modal__carousel__items-activeImg' />
                             }
                         </div>
                     ))
@@ -80,7 +78,9 @@ const Modal = () => {
 
             </div>
         </div>
-    );
+    }
+    </>
+        );
 };
 
 export default Modal;

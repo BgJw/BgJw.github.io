@@ -5,10 +5,11 @@ import MyButtons from '../../components/MyButtons/MyButtons';
 import { Helmet } from "react-helmet";
 import './FavoritesPage.scss';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import { memo } from 'react';
 
-const FavoritesPage = () => {
-    const { favorites } = useAppSelector(state => state.BadgeSlice);
-
+const FavoritesPage = memo( () => {
+    const favorites  = useAppSelector(state => state.BadgeSlice.favorites);
+    
     return (
         <>
             <Helmet>
@@ -49,6 +50,6 @@ const FavoritesPage = () => {
             }
         </>
     );
-};
+});
 
 export default FavoritesPage;

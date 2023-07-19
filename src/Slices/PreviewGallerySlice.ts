@@ -51,6 +51,7 @@ export const PreviewGallerySlice = createSlice({
                     state.index = state.clothesList.length - 1;
                 }
             }
+            state.singleClothesModal = state.clothesList[state.index];
         }
     },
     extraReducers(builder) {

@@ -12,7 +12,8 @@ const SingleProduct = () => {
     const { productId } = useParams();
     const { singleProduct, statusSingleProduct } = useAppSelector(state => state.ProductSlice);
     const dispatch = useAppDispatch();
-
+    console.log('render single product');
+    
     useEffect(() => {
         if (productId !== singleProduct.id) {
             dispatch(fetchClothesForSingleProduct(String(productId)))

@@ -7,8 +7,9 @@ import { isCheckLocalStorage } from './Slices/BadgeSlice';
 import Sidebar from './components/Sidebar/Sidebar';
 import Routes from './routes';
 import './app.scss';
+import Modal from './components/Modal/Modal';
 
-function App() {
+const App = () =>  {
   const dispatch = useAppDispatch();
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -17,7 +18,8 @@ useEffect(()=> {
   dispatch(fetchClothesForWoman());
   dispatch(isCheckLocalStorage()); 
 }, []);
-
+  console.log('render app');
+  
   return (
 
     <div className="app">
@@ -31,7 +33,7 @@ useEffect(()=> {
         <Routes />
 
         <Footer />
-        
+        <Modal />
     </div>
 
   );

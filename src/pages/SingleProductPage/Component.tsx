@@ -1,16 +1,14 @@
 import { BadgeType, IClothesService } from '../../types/Types';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import MyButtons from '../../components/MyButtons/MyButtons';
-import Sizes from '../../components/Sizes/Sizes';
-import { useState } from 'react';
+import BttnSizeAndBuy from '../../pages/SingleProductPage/BttnSizeAndBuy/BttnSizeAndBuy';
 
 interface IProps {
     singleProduct: IClothesService,
 }
 
 const Component = ({ singleProduct }: IProps) => {
-    const [size, setSize] = useState<string[]>(['S']);
-
+    
     
     return (
         <>
@@ -36,26 +34,11 @@ const Component = ({ singleProduct }: IProps) => {
                     <span className='size'>
                         Sizing
                     </span> 
-                    <Sizes 
-                        setSize={setSize} 
-                        size={size}  
-                        product={singleProduct.id}
+                    <BttnSizeAndBuy
+                        product={singleProduct}
                     />
 
                         {/* Buy and likes bttn */}
-                    <div className='wrap__information__buy'>
-                        <MyButtons
-                            on="BUY IT"
-                            off='REMOVE IT'
-                            type={BadgeType.cart}
-                            product={singleProduct}
-                            sizeForCart={size}
-                        />
-                        <MyButtons
-                            type={BadgeType.favorite}
-                            product={singleProduct}
-                        />
-                    </div>
                     <hr />
                     {/* Product characteristic */}
                     <div className='wrap__information__characteristic'>

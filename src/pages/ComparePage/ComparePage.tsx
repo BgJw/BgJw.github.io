@@ -5,8 +5,8 @@ import './ComparePage.scss';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 
 const ComparePage = () => {
-    const { compare } = useAppSelector(state => state.BadgeSlice);
-
+    const compare = useAppSelector(state => state.BadgeSlice.compare);
+    
     return (
         <>
             <Helmet>

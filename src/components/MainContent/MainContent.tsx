@@ -12,7 +12,8 @@ const MainContent = () => {
     const { productsMan, productsWoman, activeFilter, statusMan, statusWoman } = useAppSelector(state => state.ProductSlice);
 
 
-
+    console.log('render MainContent');
+    
 
     const filterProduct = (products: IClothesService[]): JSX.Element[] => {
         return products.map( product => (

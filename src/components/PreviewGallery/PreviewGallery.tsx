@@ -1,21 +1,22 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { showModal, setModalMainPhoto } from '../../Slices/PreviewGallerySlice';
 import { Status } from '../../types/Types';
-import Modal from '../Modal/Modal';
 import Spinner from '../Spinner/Spinner';
 import './PreviewGallery.scss';
 
-const PreviewGallery = () => {
+const PreviewGallery = memo(() => {
 
     const dispatch = useAppDispatch();
-    const { clothesList, isOpenModal, status } = useAppSelector(state => state.PreviewGallerySlice);
-    
+    const clothesList = useAppSelector(state => state.PreviewGallerySlice.clothesList);
+    const status = useAppSelector(state => state.PreviewGallerySlice.status);
+
     const divRef = useRef<HTMLDivElement>(null);
     let interval: ReturnType<typeof setInterval>;
     let left = 0;
     let right = 0;
 
+    console.log('render previewGallery');
     
     const scrollGallery = useCallback((): void => {
 
@@ -77,11 +78,10 @@ const PreviewGallery = () => {
                             }
                         </div>
                     </div>
-                    {isOpenModal && <Modal />}
                 </>
             }
         </>
     );
-};
+});
 
 export default PreviewGallery;

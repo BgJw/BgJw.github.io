@@ -6,8 +6,11 @@ import FavoritesPage from "../pages/FavoritesPage/FavoritesPage";
 import CartPage from "../pages/CartPage/CartPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import SingleProduct from "../pages/SingleProductPage/SingleProduct";
+import React from "react";
 
-const Routes = () => {
+const Routes = React.memo(() => {
+    console.log('render routes');
+    
     const routes = useRoutes([
         { path: '/', element: <HomePage /> },
         { path: '/compare', element: <ComparePage /> },
@@ -19,6 +22,6 @@ const Routes = () => {
     ]);
 
     return routes;
-};
+});
 
 export default Routes;

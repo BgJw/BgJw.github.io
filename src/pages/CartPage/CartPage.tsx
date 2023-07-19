@@ -3,14 +3,15 @@ import { Helmet } from "react-helmet";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Content from "./Content";
 import { useState } from "react";
-import './CartPage.scss';
 import PriceSection from "./PriceSection/PriceSection";
+import './CartPage.scss';
 
 
 
 const CartPage = () => {
-    const { data } = useAppSelector(state => state.BadgeSlice.cart);
+    const data = useAppSelector(state => state.BadgeSlice.cart.data);
     const [totalPrice, setTotalPrice] = useState<{ [x: string]: number }>({});
+    console.log('render price Section');
     
     return (
         <>

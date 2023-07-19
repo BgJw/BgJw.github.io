@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { logo } from '../Header/Header';
 import './Sidebar.scss';
@@ -11,11 +11,12 @@ interface IProps {
 }
 
 const Sidebar = ({ setShowSidebar, showSidebar }: IProps) => {
-
+    console.log('render sidebar');
+    
     const [style, setStyle] = useState('sidebar show');
 
 
-    const closeSidebar = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const closeSidebar = useCallback((e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         const target = e.target as Element;
 
         if (target.classList.contains('sidebar__close') || target.classList.contains('sidebar') || target.tagName === 'A') {
@@ -26,7 +27,7 @@ const Sidebar = ({ setShowSidebar, showSidebar }: IProps) => {
                 setShowSidebar(false);
             }, 300);
         }
-    }
+    }, [setShowSidebar]);
 
     return (
         <aside

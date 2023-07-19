@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { memo } from 'react';
 
 const telegram = require('../../assets/icons/telegram_icon.png');
 const facebook = require('../../assets/icons/facebook_icon.png');
 const youtube = require('../../assets/icons/youtube_icon.png');
 
-const Footer = () => {
-
+const Footer = memo(() => {
+    
     return (
         <footer className='footer'>
             <div className='footer__position'>
@@ -25,6 +26,6 @@ const Footer = () => {
             
         </footer>
     );
-};
+});
 
 export default Footer;

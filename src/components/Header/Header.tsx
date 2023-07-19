@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../Hooks/useDispatch_Selector';
-import Badge from '../Badge/Badge';
 import './Header.scss';
+import Navigation from './Navigation';
 
 export const logo = require('../../assets/logo/logo.svg').default;
 
@@ -11,8 +10,7 @@ interface IProps {
     showSidebar: boolean
 }
 const Header = ({setShowSidebar, showSidebar}: IProps) => {
-    const { cart, compare, favorites } = useAppSelector(state => state.BadgeSlice);
-
+    
     return (
         <>
             <header className='header'>
@@ -27,28 +25,8 @@ const Header = ({setShowSidebar, showSidebar}: IProps) => {
                     <img src={logo} alt="O stories" />
                 </NavLink>
 
-                {/* navigator options start */}
-                <div className='header__options'>
-
-                    {/* navigation search */}
-                    <NavLink to='/filter' className='search-button bttn__link' />
-
-                    {/* navigation compare */}
-                    <NavLink to='/compare' className='compare-link'>
-                        <Badge amount={compare.amount} />
-                    </NavLink>
-
-                    {/* navigation favorites */}
-                    <NavLink to="/favorites" className='favorites-link'>
-                        <Badge amount={favorites.amount} />
-                    </NavLink>
-
-                    {/* navigation cart */}
-                    <NavLink to="/cart" className='cart-link'  >
-                        <Badge amount={cart.amount} />
-                    </NavLink>
-                </div>
-                {/* navigation  end  */}
+                {/* navigator options */}
+                <Navigation />
             </header>
             <hr />
         </>

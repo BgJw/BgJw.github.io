@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { IFilter } from "./FilterPage";
 
 interface IProps {
@@ -7,7 +8,7 @@ interface IProps {
     setFilter: (value: React.SetStateAction<IFilter>) => void
 };
 
-const MyInput = ({ name, data, filterOption, setFilter }: IProps) => {
+const MyInput = memo(({ name, data, filterOption, setFilter }: IProps) => {
 
     type key = keyof typeof filterOption;
 
@@ -49,6 +50,9 @@ const MyInput = ({ name, data, filterOption, setFilter }: IProps) => {
 
             </div>
     );
-};
+});
 
 export default MyInput;
+
+
+
