@@ -19,9 +19,9 @@ const Footer = memo(() => {
             </div>
             <hr />
             <div className='footer__icons'>
-                <img src={telegram} alt="telegram" />
-                <img src={facebook} alt="facebook" />
-                <img src={youtube} alt="youtube" />
+                <img src={telegram} alt="telegram" loading='lazy' />
+                <img src={facebook} alt="facebook" loading='lazy' />
+                <img src={youtube} alt="youtube" loading='lazy' />
             </div>
             
         </footer>

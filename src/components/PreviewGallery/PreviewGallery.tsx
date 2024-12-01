@@ -16,8 +16,6 @@ const PreviewGallery = memo(() => {
     let left = 0;
     let right = 0;
 
-    console.log('render previewGallery');
-    
     const scrollGallery = useCallback((): void => {
 
             const el = divRef.current as Element;
@@ -51,7 +49,6 @@ const PreviewGallery = memo(() => {
             {status === Status.loading && <Spinner />}
             {status === Status.error && <p> pls reload page </p>}
             {status === Status.idle &&
-                <>
                     <div 
                         className='gallery'
                         ref={divRef}
@@ -78,7 +75,6 @@ const PreviewGallery = memo(() => {
                             }
                         </div>
                     </div>
-                </>
             }
         </>
     );

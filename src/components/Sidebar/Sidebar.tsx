@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const Sidebar = ({ setShowSidebar, showSidebar }: IProps) => {
-    console.log('render sidebar');
     
     const [style, setStyle] = useState('sidebar show');
 

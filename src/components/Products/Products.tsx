@@ -30,7 +30,7 @@ const Products = ({product}: IProduct) => {
                 <div className='product__preview-title'>{product.alt_description}</div>
                 <div className='product__preview-buy'>
                     <p>{product.price} $</p>
-                    <Link to={`/product/${product.id}`} />
+                    <Link to={`/product/${product.id}`} aria-label='add to cart'/>
                 </div>
             </div>
         </div>

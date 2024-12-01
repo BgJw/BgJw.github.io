@@ -1,19 +1,16 @@
-import { useCallback, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { hideModal, onChangeIndex, setModalMainPhoto } from '../../Slices/PreviewGallerySlice';
 
 import './Modal.scss';
+import CarouselItem from './CarouselItem';
 
 
 
-const Modal = () => {
+const Modal = memo(() => {
 
     const dispatch = useAppDispatch();
-    const { singleClothesModal, clothesList, isOpenModal } = useAppSelector(state => state.PreviewGallerySlice);
-
-
-    console.log('render Modal');
-    
+    const { singleClothesModal, clothesList, isOpenModal } = useAppSelector(state => state.PreviewGallerySlice);    
 
 
 
@@ -23,7 +20,7 @@ const Modal = () => {
     }, [dispatch]);
 
     useEffect(() => {
-
+        if (!isOpenModal) return;
         document.addEventListener('keydown', onChangeModalPhoto);
 
         return () => document.removeEventListener('keydown', onChangeModalPhoto);
@@ -58,22 +55,14 @@ const Modal = () => {
                     alt={singleClothesModal.alt_description} />
             </div>
             <div className='modal__carousel'>
-                {
-                    clothesList.map((carousel, i) => (
-                        <div key={carousel.id} className='modal__carousel__items'>
-                            <img
-                                className='modal__carousel__items-img'
-                                src={carousel.urls.thumb}
-                                alt={carousel.alt_description}
-                                onClick={() => singleClothesModal.id !== carousel.id && dispatch(setModalMainPhoto(i))}
-                            />
-                            {
-                                singleClothesModal.id === carousel.id
-                                    && <span className='modal__carousel__items-activeImg' />
-                            }
-                        </div>
-                    ))
-                }
+                {clothesList.map((carousel, i) => (
+                     <CarouselItem
+                     key={carousel.id}
+                     carousel={carousel}
+                     isActive={singleClothesModal.id === carousel.id}
+                     onClick={() => singleClothesModal.id !== carousel.id && dispatch(setModalMainPhoto(i))}
+                   />
+                    ))}
 
 
             </div>
@@ -81,6 +70,6 @@ const Modal = () => {
     }
     </>
         );
-};
+});
 
 export default Modal;

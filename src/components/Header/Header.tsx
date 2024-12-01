@@ -22,7 +22,7 @@ const Header = ({setShowSidebar, showSidebar}: IProps) => {
 
                 {/* navigator logo */}
                 <NavLink to="/" className={showSidebar ? 'header__logo hide':'header__logo show'}>
-                    <img src={logo} alt="O stories" />
+                    <img src={logo} alt="O stories" loading='lazy'/>
                 </NavLink>
 
                 {/* navigator options */}
