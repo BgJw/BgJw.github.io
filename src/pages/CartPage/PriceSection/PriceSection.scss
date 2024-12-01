@@ -1,0 +1,107 @@
+.priceWrap {
+    position: -webkit-sticky;
+    position: sticky;
+    right: 0;
+    top: 15px;
+    display: grid;
+    grid-template-rows: 40px 40px 75px 60px;
+    row-gap: 10px;
+    height: auto;
+    max-height: 200px;
+    -ms-flex-line-pack: stretch;
+
+    align-content: stretch;
+
+    background-color: rgb(234, 231, 231);
+    border-radius: 10px;
+
+    &__section {
+        display: grid;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: 10px;
+    }
+    &__gift{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        -webkit-column-gap: 3px;
+           -moz-column-gap: 3px;
+                column-gap: 3px;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        padding: 0 20px;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;     
+        
+        input{
+            border: none;
+            outline: none;
+            padding: 3px;
+            border-radius: 5px;
+            height: 25px;
+            background-color:rgb(255, 252, 252);
+        }
+    }
+
+    &__grid {
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        display: grid;
+        
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 30px 35px;
+        padding: 0 20px;
+
+        p{
+            text-align: end;
+        }
+
+        span{
+            margin-right: 5px;
+            -webkit-transition: font-size .3s;
+            -o-transition: font-size .3s;
+            transition: font-size .3s;
+        }
+        .bigSize {
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+        .smallSize{
+            font-size: 12px;
+        }
+        .line{
+            text-decoration: line-through;
+        }
+    }
+
+    &__bttn {
+        background-color: #ff6163;
+        color: white;
+        border-radius: 0 0 5px 5px;
+        margin-top: 5px;
+        font-size: 18px;
+
+        &:hover {
+            background-color: #ff6164d9;
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .priceWrap{
+        max-height: none;
+        border-radius: 0;
+        &__bttn{
+            border-radius: 0;
+        }
+        &__gift{
+            grid-template-columns: 100px 1fr;
+        }
+    }
+}

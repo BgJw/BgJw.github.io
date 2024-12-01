@@ -1,0 +1,102 @@
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(150px, 220px);
+
+    grid-column-gap: 30px;
+
+    margin: 30px 30px 50px 30px ;
+    overflow-x: auto;
+    cursor: default;
+    
+    h3 { white-space: nowrap; }
+
+    &::-webkit-scrollbar{
+        height: 5px;
+        border-radius:5px;    
+        background-color: #dddddd;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #FF6163;
+        border-radius:5px;
+        
+        &:hover{
+            background-color: #c24747;
+        }
+    }
+}
+
+.compare{
+
+    &__img{
+        width: 100%;
+        border-radius: 5px;
+    }
+    &__information{
+
+        &-p{
+            height: 40px;
+            font-size: 14px;
+            overflow-y: hidden;
+        }
+
+        &-feather{
+            display: grid;
+            gap: 30px;
+            margin-bottom: 20px;
+
+            small{
+                    height: 10px;
+                    font-size: 16px;
+                    color: rgba(158, 154, 154, 0.858);
+                }
+                p{
+                    font-size: 20px;
+                }
+        }
+        &-bttn{
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: center;
+
+            button{
+                background-position: center center;
+                background-repeat: no-repeat;
+                width: 30px;
+                height: 30px;
+                background-color: white;
+                -webkit-transition: background-image .4s, color .4s;
+                -o-transition: background-image .4s, color .4s;
+                transition: background-image .4s, color .4s;
+
+            }
+            
+            .bttnCompareOn{
+                background-image: url('../../assets//navigation/delete_cart.png');
+
+                &:hover{
+                    background-image: url('../../assets//navigation/delete__sweep.png');
+                    opacity: .8;
+                }
+            }
+        }
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .container{
+        grid-template-columns: repeat(4, 200px);
+        grid-auto-columns: minmax(120px, 200px);
+    }
+    .compare__img{
+        max-height: 250px;
+    }
+}

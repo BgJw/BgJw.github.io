@@ -1,0 +1,25 @@
+.bread {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    color: rgb(168, 165, 165);
+    gap: 5px;
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 15px;
+
+    a,
+    button {
+        color: inherit;
+        background-color: transparent;
+        font-size: 16px;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+
+        &:hover {
+            color: rgb(137, 134, 134);
+        }
+    }
+}

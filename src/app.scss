@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;500;600;700&family=Roboto:wght@100;300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Montserrat';
+
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+
+    -webkit-tap-highlight-color: transparent; 
+    --highlight-color: transparent;
+
+
+
+    &::-webkit-scrollbar{
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #FF6163;
+        border-radius:2px;        
+        &:hover{
+            background-color: #e45759;
+        }
+    }
+
+}
+
+button{
+    border: none;
+    cursor: pointer;
+
+}
+
+.bttn__link{
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 25px;
+    height: 25px;
+}
+
+.app{
+    width: 95%;
+    margin: 0 auto;
+
+}
+.pageName{
+    margin-top: 30px;
+    margin-left: 10px;
+    font-weight: 100;
+}
+.pageEmpty{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+hr{
+    height: 1px;
+    opacity: .2;
+}
+
+.bttnCompareOn{
+    background-image: url('../src/assets/navigation/compareOn.png');
+    background-color: #ff6163;
+}
+
+.bttnCompareOff{
+    background-image: url('../src/assets/navigation/compareOf.png');
+
+    &:hover {
+        outline: 1px solid #ff6163;
+    }
+}
+
+.bttnFavoritesOn{
+    background-image: url('../src/assets/navigation/heart.png');
+    background-size: 20px;
+}
+
+.bttnFavoritesOff{
+    background-image: url('../src/assets/navigation/heart_full.png');
+    background-size: 20px;
+}
+
+.bttnCartOff, .bttnCartOn{
+    height: 50px;
+
+    border-radius: 5px;
+    background-color: #ff6163;
+    color: white;
+    font-size: 18px;
+    margin-right: 10px;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+
+    &:hover {
+        background-color: #ff6164d9;
+    }
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+    .app{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .app{
+        width: 100%;
+    }
+}
+
