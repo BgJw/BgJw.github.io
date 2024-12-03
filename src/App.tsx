@@ -31,7 +31,7 @@ useEffect(()=> {
         {showSidebar && <Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar}  /> }
 
         <Routes />
-      <Suspense fallback={<p>loading....</p>}>
+      <Suspense>
         <LazyModal />
         <LazyFooter />
       </Suspense>

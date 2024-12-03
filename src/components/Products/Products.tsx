@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Products.scss';
 import MyButtons from '../MyButtons/MyButtons';
@@ -10,27 +9,6 @@ interface IProduct {
 }
 
 const Products = ({ product, i }: IProduct) => {
-    const [itemsToShow, setItemsToShow] = useState<number>(7); 
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 426) {
-                setItemsToShow(2);
-            } else if (window.innerWidth < 769) {
-                setItemsToShow(3);
-            } else if (window.innerWidth < 1025) {
-                setItemsToShow(5);
-            } else {
-                setItemsToShow(7);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        handleResize();
-
-        return () => window.removeEventListener('resize', handleResize);
-    }, []); 
 
     return (
         <div className='product'>
@@ -49,7 +27,10 @@ const Products = ({ product, i }: IProduct) => {
                         `}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         alt={product.alt_description}
-                        loading={i < itemsToShow ? 'eager' : 'lazy'}
+                        width={200}
+                        height={300}
+                        
+                        loading='lazy'
                     />
                 </Link>
             </div>

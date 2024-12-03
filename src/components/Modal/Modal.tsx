@@ -1,14 +1,14 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { hideModal, onChangeIndex, setModalMainPhoto } from '../../Slices/PreviewGallerySlice';
+import CarouselItem from './CarouselItem';
 
 import './Modal.scss';
-import CarouselItem from './CarouselItem';
 
 
 
 const Modal = memo(() => {
-
+    
     const dispatch = useAppDispatch();
     const { singleClothesModal, clothesList, isOpenModal } = useAppSelector(state => state.PreviewGallerySlice);    
 

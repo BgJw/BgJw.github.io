@@ -2,9 +2,9 @@ import {useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { IClothesService, Status } from '../../types/Types';
 import FilterButton from './FilterButton';
 import Products from '../Products/Products';
-import Spinner from '../Spinner/Spinner';
 
 import './MainContent.scss';
+import Skeleton from '../Skeleton';
 
 
 
@@ -19,7 +19,9 @@ const MainContent = () => {
             <Products key={product.id} product={product} i={i}/>
         ))
     }
-
+    const renderSkeletons = () => {
+        return Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} />);
+    };
 
     return (
         <main className='content'>
@@ -29,21 +31,15 @@ const MainContent = () => {
                 <FilterButton name={'woman'} />
             </div>
             
-            {/* Product content */}
-            { (statusMan === Status.error || statusWoman === Status.error) && <p>you need reload page</p> }
-            { (statusMan === Status.loading || statusWoman === Status.loading) && <Spinner /> }
+             {/* Product content */}
+             {(statusMan === Status.error || statusWoman === Status.error) && <p>You need to reload the page</p>}
 
-            <div className='content__products'>
-                {
-                    activeFilter === 'man' ?
-                        <>
-                            {statusMan === Status.idle && filterProduct(productsMan)}
-                        </>
-                        :
-                        <>
-                            {statusWoman === Status.idle && filterProduct(productsWoman)}
-                        </>
-                }
+            <div className="content__products">
+                {statusMan === Status.loading || statusWoman === Status.loading
+                    ? renderSkeletons()
+                    : activeFilter === 'man'
+                    ? statusMan === Status.idle && filterProduct(productsMan)
+                    : statusWoman === Status.idle && filterProduct(productsWoman)}
             </div>
         </main>
     );

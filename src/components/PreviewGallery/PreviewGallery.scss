@@ -1,10 +1,13 @@
 .gallery{
+    display: flex;
+    align-items: center;
     overflow-x: hidden;
     width: 90%;
+    height: 250px;;
     margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding-bottom: 10px;
+    
     &::-webkit-scrollbar{
         height: 5px;
         border-radius:5px;    
@@ -21,8 +24,6 @@
     }
     &__panel{
         display: grid;
-        grid-template-columns: repeat(6, minmax(180px, 191px));
-        grid-template-rows: 240px;
         grid-row-gap: 5px;
         grid-column-gap: 29px;
         -webkit-box-align: stretch;
@@ -35,6 +36,10 @@
 
 
         &__item{
+            display: flex;
+            justify-content: center;
+            width: 200px;
+            height: 240px;
             border: 3px solid #FF6163;
             border-radius: 5px;
             padding: 5px;
@@ -47,5 +52,17 @@
             cursor: pointer;
         }
     }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .gallery{
+        &__panel{
+            &__item{
+                width: 180px;
+                height: 220px;
+            
+            }
+        }
     }
 }
