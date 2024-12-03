@@ -16,13 +16,14 @@ const Header = ({setShowSidebar, showSidebar}: IProps) => {
             <header className='header'>
                 {/* navigator menu  */}
                 <button 
-                    className='header__menu bttn__link' 
+                    className='header__menu bttn__link'
+                    aria-label='navigation' 
                     onClick={ () => setShowSidebar(true) }
                     />
 
                 {/* navigator logo */}
                 <NavLink to="/" className={showSidebar ? 'header__logo hide':'header__logo show'}>
-                    <img src={logo} alt="O stories" loading='lazy'/>
+                    <img src={logo} alt="O stories" loading='lazy' width={300} height={50} />
                 </NavLink>
 
                 {/* navigator options */}

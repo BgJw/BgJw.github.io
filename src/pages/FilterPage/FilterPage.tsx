@@ -94,8 +94,8 @@ const FilterPage = () => {
             <hr />
             <div className='filter__filteredProducts'>
                 {
-                    copyData.map(product => (
-                        <Products key={product.id} product={product} />
+                    copyData.map((product, i )=> (
+                        <Products key={product.id} product={product} i={i} />
                     ))
                 }
             </div>

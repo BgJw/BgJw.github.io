@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;500;600;700&family=Roboto:wght@100;300&display=swap');
 
+@font-face {
+    font-family: 'Montserrat';
+    src: url('https://fonts.gstatic.com/s/montserrat/v22/4UzDkCkUz7ocWi6FAtL6IWcNGA.woff2') format('woff2');
+    font-display: swap;
+  }
 *{
     margin: 0;
     padding: 0;
     text-decoration: none;
     list-style: none;
-    font-family: 'Montserrat';
 
     -webkit-box-sizing: border-box;
             box-sizing: border-box;

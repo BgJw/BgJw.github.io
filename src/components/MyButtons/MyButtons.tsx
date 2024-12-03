@@ -13,7 +13,6 @@ interface IProps{
 }
 
 const MyButtons = memo( ({ on, off, type, product, sizeForCart }: IProps) => {
-    console.log('render button');
     
     const style = () => { 
         if(type === BadgeType.favorite){
@@ -39,6 +38,7 @@ const MyButtons = memo( ({ on, off, type, product, sizeForCart }: IProps) => {
         !badge?
             <button 
                 className={ style() }
+                aria-label={type}
                 onClick={ () => {
                     dispatch(incrementBadge(type))
                     dispatch(addDataBadge({name: type, data: {...product, size: sizeForCart} as IClothesService}))

@@ -9,7 +9,6 @@ import SingleProduct from "../pages/SingleProductPage/SingleProduct";
 import React from "react";
 
 const Routes = React.memo(() => {
-    console.log('render routes');
     
     const routes = useRoutes([
         { path: '/', element: <HomePage /> },

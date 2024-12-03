@@ -15,8 +15,8 @@ const MainContent = () => {
     
 
     const filterProduct = (products: IClothesService[]): JSX.Element[] => {
-        return products.map( product => (
-            <Products key={product.id} product={product} />
+        return products.map( (product, i) => (
+            <Products key={product.id} product={product} i={i}/>
         ))
     }
 
