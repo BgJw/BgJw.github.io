@@ -12,7 +12,7 @@ const CarouselItem = memo(({ carousel, isActive, onClick }: ICarouselItem) => {
     return (
         <div className='modal__carousel__items'>
     <img
-      className='modal__carousel__items-img'
+      className='modal__carousel__items-img lazy'
       src={carousel.urls.thumb}
       alt={carousel.alt_description}
       loading="lazy"

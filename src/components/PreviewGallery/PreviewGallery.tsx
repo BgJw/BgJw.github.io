@@ -1,6 +1,6 @@
-import { memo, useCallback, useEffect, useRef } from 'react';
+import { memo, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
-import { showModal, setModalMainPhoto } from '../../Slices/PreviewGallerySlice';
+import { showModal, setModalMainPhoto, fetchClothes } from '../../Slices/PreviewGallerySlice';
 import { Status } from '../../types/Types';
 import Spinner from '../Spinner/Spinner';
 import './PreviewGallery.scss';
@@ -10,37 +10,12 @@ const PreviewGallery = memo(() => {
     const clothesList = useAppSelector(state => state.PreviewGallerySlice.clothesList);
     const status = useAppSelector(state => state.PreviewGallerySlice.status);
 
-    const divRef = useRef<HTMLDivElement>(null);
-    let interval: ReturnType<typeof setInterval>;
-    let left = 0;
-    let right = 0;
-
-    const scrollGallery = useCallback((): void => {
-        const el = divRef.current as Element;
-
-        if (el) {
-            if (left <= el.scrollWidth - el.clientWidth) {
-                el.scrollTo({ top: 0, left: left });
-                left += 1;
-                right = left;
-            } else {
-                right -= 1;
-                el.scrollTo({ top: 0, left: right });
-                if (right <= 0) {
-                    left = right;
-                }
-            }
-        }
-    }, [left, right]);
-
     useEffect(() => {
-        interval = setInterval(scrollGallery, 30);
-
-        return () => clearInterval(interval);
+        dispatch(fetchClothes());
     }, []);
 
     return (
-        <div className="gallery" ref={divRef}>
+        <div className="gallery">
             {status === Status.loading && (
                 <div className="gallery__status">
                     <Spinner />
@@ -58,13 +33,17 @@ const PreviewGallery = memo(() => {
                     {clothesList.map((photo, i) => (
                         <div key={photo.id} className="gallery__panel__item">
                             <img
-                                className="gallery__panel__item-img"
+                                className="gallery__panel__item-img lazy"
                                 onClick={() => {
                                     dispatch(showModal());
                                     dispatch(setModalMainPhoto(i));
                                 }}
                                 src={photo.urls.thumb}
+                                data-src={photo.urls.small}
                                 alt={photo.alt_description}
+                                width={200}
+                                height={240}
+                                loading="lazy"
                             />
                         </div>
                     ))}

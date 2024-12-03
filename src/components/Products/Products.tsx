@@ -19,18 +19,17 @@ const Products = ({ product, i }: IProduct) => {
                 />
                 <Link to={`/product/${product.id}`} aria-label={`View details of ${product.alt_description}`}>
                     <img
-                        className='product__img-photo'
-                        src={product.urls.regular}
+                        className='product__img-photo lazy'
+                        src={product.urls.thumb}
                         srcSet={`
                             ${product.urls.thumb} 600w,
-                            ${product.urls.regular} 900w,
+                            ${product.urls.small} 900w,
                         `}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         alt={product.alt_description}
                         width={200}
                         height={300}
-                        
-                        loading='lazy'
+                        loading={ i < 6 ? 'eager' : 'lazy'}
                     />
                 </Link>
             </div>

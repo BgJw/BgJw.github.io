@@ -1,26 +1,30 @@
 import { useRoutes } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage";
-import FilterPage from "../pages/FilterPage/FilterPage";
-import ComparePage from "../pages/ComparePage/ComparePage";
-import FavoritesPage from "../pages/FavoritesPage/FavoritesPage";
-import CartPage from "../pages/CartPage/CartPage";
-import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-import SingleProduct from "../pages/SingleProductPage/SingleProduct";
-import React from "react";
+import { Suspense, lazy, memo } from "react";
 
-const Routes = React.memo(() => {
-    
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const FilterPage = lazy(() => import("../pages/FilterPage/FilterPage"));
+const ComparePage = lazy(() => import("../pages/ComparePage/ComparePage"));
+const FavoritesPage = lazy(() => import("../pages/FavoritesPage/FavoritesPage"));
+const CartPage = lazy(() => import("../pages/CartPage/CartPage"));
+const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
+const SingleProduct = lazy(() => import("../pages/SingleProductPage/SingleProduct"));
+
+const Routes = memo(() => {
     const routes = useRoutes([
         { path: '/', element: <HomePage /> },
         { path: '/compare', element: <ComparePage /> },
-        { path: '/favorites',element: <FavoritesPage /> },
+        { path: '/favorites', element: <FavoritesPage /> },
         { path: '/cart', element: <CartPage /> },
         { path: '/product/:productId', element: <SingleProduct /> },
         { path: '/filter', element: <FilterPage /> },
         { path: '*', element: <NotFoundPage /> },
     ]);
 
-    return routes;
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            {routes}
+        </Suspense>
+    );
 });
 
 export default Routes;

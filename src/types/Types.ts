@@ -9,8 +9,9 @@ export interface IClothesService {
     readonly 'material'?: string,
     readonly 'sizes'?: string[],
     readonly "urls": {
+        readonly 'regular': string,
+        readonly 'small': string,
         readonly "thumb": string,
-        readonly 'regular': string
     },
 }
 

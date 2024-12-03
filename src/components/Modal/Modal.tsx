@@ -46,11 +46,11 @@ const Modal = memo(() => {
                 X
             </button>
             <div className='modal__bg'
-                style={{ backgroundImage: `url(${singleClothesModal.urls.thumb})` }}
+                style={{ backgroundImage: `url(${singleClothesModal.urls.regular})` }}
             />
             <div className='modal__item'>
                 <img
-                    className={'modal__item-img animateOn'}
+                    className={'modal__item-img animateOn lazy'}
                     src={singleClothesModal.urls.regular}
                     alt={singleClothesModal.alt_description} />
             </div>

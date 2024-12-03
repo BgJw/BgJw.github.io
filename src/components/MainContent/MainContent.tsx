@@ -1,16 +1,26 @@
-import {useAppSelector } from '../../Hooks/useDispatch_Selector';
+import {useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { IClothesService, Status } from '../../types/Types';
 import FilterButton from './FilterButton';
 import Products from '../Products/Products';
-
 import './MainContent.scss';
 import Skeleton from '../Skeleton';
+import { useEffect } from 'react';
+import { fetchClothesForMan, fetchClothesForWoman } from '../../Slices/ProductSlice';
 
 
 
 const MainContent = () => {
     const { productsMan, productsWoman, activeFilter, statusMan, statusWoman } = useAppSelector(state => state.ProductSlice);
-
+    const dispatch = useAppDispatch();
+    
+    useEffect(()=> {
+        if(activeFilter === 'man'){
+            dispatch(fetchClothesForMan());
+        }
+        else if(activeFilter === 'woman'){
+            dispatch(fetchClothesForWoman());
+        }
+      }, [activeFilter]);
 
     
 
