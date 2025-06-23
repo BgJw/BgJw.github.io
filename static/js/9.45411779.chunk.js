@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkhm=self.webpackChunkhm||[]).push([[9],{6009:(e,s,r)=>{r.r(s),r.d(s,{default:()=>h});var l=r(5475),c=r(1591),d=r(579);const h=()=>(0,d.jsxs)("div",{className:"errorPage",children:[(0,d.jsx)(c.m,{children:(0,d.jsx)("title",{children:"Not Found Page"})}),(0,d.jsxs)("div",{children:[(0,d.jsx)("p",{children:"404, pls return to Home Page"}),(0,d.jsx)(l.N_,{to:"/",children:"Go to Home"})]})]})}}]);
+//# sourceMappingURL=9.45411779.chunk.js.map
