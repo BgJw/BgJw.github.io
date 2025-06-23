@@ -24,7 +24,7 @@ const Modal = memo(() => {
         document.addEventListener('keydown', onChangeModalPhoto);
 
         return () => document.removeEventListener('keydown', onChangeModalPhoto);
-    }, []);
+    }, [isOpenModal, onChangeModalPhoto]);
 
 
 
@@ -45,7 +45,8 @@ const Modal = memo(() => {
                 onClick={() => dispatch(hideModal())}>
                 X
             </button>
-            <div className='modal__bg'
+            <div 
+                className='modal__bg'
                 style={{ backgroundImage: `url(${singleClothesModal.urls.regular})` }}
             />
             <div className='modal__item'>

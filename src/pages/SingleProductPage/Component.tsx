@@ -32,7 +32,7 @@ const Component = ({ singleProduct }: IProps) => {
                     </div>
                     {/* Size */}
                     <span className='size'>
-                        Sizing
+                        Choose size:
                     </span> 
                     <BttnSizeAndBuy
                         product={singleProduct}

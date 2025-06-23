@@ -20,7 +20,7 @@ const MainContent = () => {
         else if(activeFilter === 'woman'){
             dispatch(fetchClothesForWoman());
         }
-      }, [activeFilter]);
+      }, [activeFilter, dispatch]);
 
     
 
@@ -30,7 +30,7 @@ const MainContent = () => {
         ))
     }
     const renderSkeletons = () => {
-        return Array.from({ length: 6 }).map((_, i) => <Skeleton key={i} />);
+        return Array.from({ length: 10 }).map((_, i) => <Skeleton key={i} />);
     };
 
     return (

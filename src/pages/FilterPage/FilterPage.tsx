@@ -8,16 +8,14 @@ import FilterOptions from './FilterOptions';
 import './FilterPage.scss';
 
 export interface IFilter {
-    text: string,
-    price: string,
-    country: string[],
-    material: string[],
-    size: string[]
+    text: string;
+    price: string;
+    country: string[];
+    material: string[];
+    size: string[];
 }
 
-
 const FilterPage = () => {
-
     const { productsMan, productsWoman } = useAppSelector(state => state.ProductSlice);
 
     const [copyData, setCopyData] = useState<IClothesService[]>([]);
@@ -28,54 +26,56 @@ const FilterPage = () => {
         material: [],
         size: []
     });
-    const filterClothers = (data: IClothesService[]) => {
-        let copy = [...data];
 
-        if (filterOptions.text.trim()) {
-            copy = copy.filter(el => el.alt_description.includes(filterOptions.text));
-        }
-        if (filterOptions.price) {
-            copy = copy.filter(el => Number(el.price) <= Number(filterOptions.price))
-        }
-        if (filterOptions.size.length > 0) {
+    const isAvailabilityOptions = (
+        data: IClothesService[],
+        filter: string[],
+        option: keyof IClothesService
+    ) => {
+        return data.filter(item => {
+            const field = item[option];
 
-            copy = isAvailabilityOptions(copy, filterOptions.size, 'sizes')
-        }
-        if (filterOptions.country.length > 0) {
-
-            copy = isAvailabilityOptions(copy, filterOptions.country, 'country')
-        }
-
-        if (filterOptions.material.length > 0) {
-
-            copy = isAvailabilityOptions(copy, filterOptions.material, 'material')
-        }
-
-        setCopyData(copy);
-    }
-
-    const isAvailabilityOptions = (data: IClothesService[], filter: string[], option: string) => {
-        type key = keyof IClothesService;
-
-        const temp: IClothesService[] = [];
-
-        for (let i = 0; i < data.length; i++) {
-            let s = data[i][option as key];
-
-            if (filter.includes(String(s))) {
-                temp.push(data[i])
+            if (Array.isArray(field)) {
+                // Проверяем пересечение массивов
+                return field.some(val => filter.includes(String(val)));
+            } else if (typeof field === 'string' || typeof field === 'number') {
+                return filter.includes(String(field));
             }
-        }
-        return temp
+            return false;
+        });
     };
 
+    const filterClothers = (data: IClothesService[]) => {
+        const textLower = filterOptions.text.trim().toLowerCase();
+
+        let filtered = data.filter(el => {
+            // Фильтрация по тексту (alt_description)
+            if (textLower && !el.alt_description.toLowerCase().includes(textLower)) {
+                return false;
+            }
+            // Фильтрация по цене
+            if (filterOptions.price && Number(el.price) > Number(filterOptions.price)) {
+                return false;
+            }
+            return true;
+        });
+
+        if (filterOptions.size.length > 0) {
+            filtered = isAvailabilityOptions(filtered, filterOptions.size, 'sizes');
+        }
+        if (filterOptions.country.length > 0) {
+            filtered = isAvailabilityOptions(filtered, filterOptions.country, 'country');
+        }
+        if (filterOptions.material.length > 0) {
+            filtered = isAvailabilityOptions(filtered, filterOptions.material, 'material');
+        }
+
+        setCopyData(filtered);
+    };
 
     useEffect(() => {
-
         filterClothers([...productsMan, ...productsWoman]);
-
     }, [filterOptions, productsMan, productsWoman]);
-
 
     return (
         <div className='filter'>
@@ -83,21 +83,17 @@ const FilterPage = () => {
                 <title>Search - Find the best for you</title>
             </Helmet>
 
-
-            {/* links */}
             <Breadcrumbs />
 
-            {/* filter Input */}
             <FilterOptions 
                 filterOptions={filterOptions} 
-                setFilterOptions={setFilterOptions} />
+                setFilterOptions={setFilterOptions} 
+            />
             <hr />
             <div className='filter__filteredProducts'>
-                {
-                    copyData.map((product, i )=> (
-                        <Products key={product.id} product={product} i={i} />
-                    ))
-                }
+                {copyData.map((product, i) => (
+                    <Products key={product.id} product={product} i={i} />
+                ))}
             </div>
         </div>
     );

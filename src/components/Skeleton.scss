@@ -6,11 +6,21 @@
     padding: 10px;
 
     &__image {
-        width: 200px;
-        height: 300px;
+        width: 240px;
+        height: 430px;
         background-color: #e0e0e0;
         border-radius: 10px;
         animation: pulse 1.5s infinite;
+
+        @media (max-width: 768px) {
+            width: 200px;
+            height: 359px;
+        }
+
+        @media (max-width: 425px) {
+            width: 150px;
+            height: 200px;
+        }
     }
 
     &__text {
@@ -23,17 +33,5 @@
         &.small {
             width: 60%;
         }
-    }
-}
-
-@keyframes pulse {
-    0% {
-        background-color: #e0e0e0;
-    }
-    50% {
-        background-color: #f0f0f0;
-    }
-    100% {
-        background-color: #e0e0e0;
     }
 }

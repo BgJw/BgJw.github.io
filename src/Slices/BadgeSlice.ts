@@ -39,12 +39,12 @@ export const BadgeSlice = createSlice({
                 window.localStorage.setItem(payload.name, JSON.stringify(state[payload.name as key]));
             };
         },
-        removeDataBadge: (state, {payload}: PayloadAction<DataBadge>) => {         
-            state[payload.name as key].data.map((el, i) => {
-                if (el.id === payload.data?.id) {
-                    state[payload.name as key].data.splice(i,1);
-                }
-            })
+        removeDataBadge: (state, { payload }: PayloadAction<DataBadge>) => {
+            const index = state[payload.name as key].data.findIndex(el => el.id === payload.data?.id);
+            if (index !== -1) {
+                state[payload.name as key].data.splice(index, 1);
+            }
+
             window.localStorage.setItem(payload.name, JSON.stringify(state[payload.name as key]));
         },
         isCheckLocalStorage: (state ) => {

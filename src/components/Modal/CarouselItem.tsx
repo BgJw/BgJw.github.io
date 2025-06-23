@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { setModalMainPhoto } from "../../Slices/PreviewGallerySlice";
 
 interface ICarouselItem {
     carousel: { urls: { thumb: string }; alt_description: string };

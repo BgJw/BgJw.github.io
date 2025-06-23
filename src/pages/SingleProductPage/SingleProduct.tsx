@@ -12,13 +12,12 @@ const SingleProduct = () => {
     const { productId } = useParams();
     const { singleProduct, statusSingleProduct } = useAppSelector(state => state.ProductSlice);
     const dispatch = useAppDispatch();
-    console.log('render single product');
     
     useEffect(() => {
         if (productId !== singleProduct.id) {
             dispatch(fetchClothesForSingleProduct(String(productId)))
         }
-    }, []);
+    }, [dispatch, productId, singleProduct.id]);
 
     return (
         <>
@@ -27,7 +26,7 @@ const SingleProduct = () => {
             </Helmet>
 
             {statusSingleProduct === Status.loading && <Spinner />}
-            {statusSingleProduct === Status.error && <p> Need reload page </p>}
+            {statusSingleProduct === Status.error && <p> you need to reload page </p>}
             {statusSingleProduct === Status.idle &&
                 <Component singleProduct={singleProduct} />
             }

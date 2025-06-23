@@ -48,8 +48,8 @@
     &__products {
         display: grid;
         grid-template-columns: repeat(auto-fit, 240px);
-        grid-row-gap: 50px;
-        grid-column-gap: 20px;
+        grid-row-gap: 45px;
+        grid-column-gap: 18px;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
                 justify-content: center;

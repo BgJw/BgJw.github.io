@@ -13,7 +13,7 @@ const ClothesService = () => {
     };
 
     const getClothesForPreviewGallery = async (): Promise<IClothesService[]> => {
-        const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&color=black&query=clothes&orientation=portrait`, {
+        const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&color=black&query=clothes&orientation=portrait&per_page=13`, {
             headers: {
                 'Cache-Control': 'max-age=31536000'
             }
@@ -23,7 +23,7 @@ const ClothesService = () => {
     };
 
     const getClothesForMan = async (): Promise<IClothesService[]> => {
-        const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&page=2&color=black&query=man+clothes&orientation=portrait`, {
+        const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&page=2&color=black&query=man+clothes&orientation=portrait&per_page=20`, {
             headers: {
                 'Cache-Control': 'max-age=31536000'
             }
@@ -33,7 +33,7 @@ const ClothesService = () => {
     };
 
     const getClothesForWomen = async (): Promise<IClothesService[]> => {
-        const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&page=12&color=black&query=woman+clothes&orientation=portrait`, {
+        const res = await fetch(`${BASE_API}/search/photos/?${API_KEY}&page=12&color=black&query=woman+clothes&orientation=portrait&per_page=20`, {
             headers: {
                 'Cache-Control': 'max-age=31536000'
             }

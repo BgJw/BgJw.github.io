@@ -12,7 +12,7 @@ const PreviewGallery = memo(() => {
 
     useEffect(() => {
         dispatch(fetchClothes());
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="gallery">
@@ -24,7 +24,7 @@ const PreviewGallery = memo(() => {
 
             {status === Status.error && (
                 <div className="gallery__status">
-                    <p>Pls reload page</p>
+                    <p>You need reload page</p>
                 </div>
             )}
 

@@ -8,10 +8,10 @@
         background-color: rgb(232, 230, 230);
         border-radius: 5px;
         font-size: 18px;
-        font-weight: 100;
-        -webkit-transition: border 0.4s;
-        -o-transition: border 0.4s;
-        transition: border 0.4s;
+        font-weight: 300;
+        -webkit-transition: border 0.1s;
+        -o-transition: border 0.1s;
+        transition: border 0.1s;
 
 
         &:hover{
@@ -19,7 +19,7 @@
         }
 
         &.active{
-            border: 1px solid rgb(215, 49, 49);                
+            border: 2px solid rgb(215, 49, 49);
         }
     }
 }

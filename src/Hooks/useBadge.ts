@@ -1,21 +1,10 @@
-import {useCallback, useState} from 'react';
+import { useCallback } from 'react';
 import { IClothesService } from '../types/Types';
 
-export const useBadge = ( ) => {
+export const useBadge = () => {
+    const isCheckId = useCallback((data: IClothesService[], product: IClothesService) => {
+        return data.some(el => el.id === product.id);
+    }, []);
 
-    const [badge, setbadge] = useState<boolean>(false);
-
-    const changeBadge = useCallback(() => setbadge( badge => !badge), []);
-
-    const isCheckId = (data: IClothesService[], product: IClothesService) => { 
-          
-            data.find(el => el.id === product.id && changeBadge())
-    };
-
-
-    return {
-        badge,
-        changeBadge,
-        isCheckId
-    }
+    return { isCheckId };
 };

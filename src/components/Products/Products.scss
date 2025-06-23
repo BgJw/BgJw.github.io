@@ -1,12 +1,12 @@
 .product {
     display: grid;
-    grid-template-rows: 70% 30%;
+    grid-template-rows: 1fr 90px;
 
     &__img {
         position: relative;
         cursor: pointer;
         overflow: hidden;
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         
         button {
             position: absolute;
@@ -47,7 +47,8 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 40px 30px;
-        background-color: rgba(245, 242, 242, 0.235);
+        background-color: rgba(245, 242, 242, 0.651);
+        border-radius: 0 0 10px 10px;
 
         &-title {
             font-weight: 100;
@@ -112,7 +113,6 @@
 }
 @media screen and (max-width: 426px) {
     .product {
-        grid-template-rows: 60% 40%;
         &__img {
             width: 150px;
             height: 200px;
