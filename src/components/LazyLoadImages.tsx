@@ -2,29 +2,30 @@ import { useEffect } from "react";
 
 const LazyLoadImages = () => {
   useEffect(() => {
-    const images = document.querySelectorAll('img.lazy');
-
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const image = entry.target as HTMLImageElement;
-            image.src = image.dataset.src || '';  
-            image.classList.remove('lazy');
-            observer.unobserve(image); 
-          }
+          const img = entry.target as HTMLImageElement;
+          img.src = img.dataset.src || '';
+          img.classList.remove('lazy');
+          obs.unobserve(img);
+        }
       });
-    }, { threshold: 0.3 }); 
+    }, { threshold: 0.3 });
 
-
-    images.forEach(image => {
-      observer.observe(image);
+    const mutationObserver = new MutationObserver(() => {
+      const images = document.querySelectorAll('img.lazy');
+      images.forEach(img => observer.observe(img));
     });
 
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
 
     return () => {
-      images.forEach(image => {
-        observer.unobserve(image);
-      });
+      observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, []);
 

@@ -5,7 +5,7 @@ import './Breadcrumbs.scss';
 const Breadcrumbs = () => {
     const {pathname} = useLocation();
     const navigate = useNavigate();
-    
+    console.log('Breadcrumbs rendered');
     return (
         <div className='bread'>
             <Link to={'/'}>Home</Link>

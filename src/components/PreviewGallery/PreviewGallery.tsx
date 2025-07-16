@@ -1,18 +1,20 @@
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { showModal, setModalMainPhoto, fetchClothes } from '../../Slices/PreviewGallerySlice';
 import { Status } from '../../types/Types';
 import Spinner from '../Spinner/Spinner';
 import './PreviewGallery.scss';
 
-const PreviewGallery = memo(() => {
+const PreviewGallery = () => {
     const dispatch = useAppDispatch();
     const clothesList = useAppSelector(state => state.PreviewGallerySlice.clothesList);
     const status = useAppSelector(state => state.PreviewGallerySlice.status);
 
     useEffect(() => {
-        dispatch(fetchClothes());
-    }, [dispatch]);
+        if (status === Status.idle) {
+            dispatch(fetchClothes());            
+        }
+    }, [dispatch, status]);
 
     return (
         <div className="gallery">
@@ -28,7 +30,7 @@ const PreviewGallery = memo(() => {
                 </div>
             )}
 
-            {status === Status.idle && (
+            {status === Status.success && (
                 <div className="gallery__panel">
                     {clothesList.map((photo, i) => (
                         <div key={photo.id} className="gallery__panel__item">
@@ -51,6 +53,6 @@ const PreviewGallery = memo(() => {
             )}
         </div>
     );
-});
+};
 
 export default PreviewGallery;

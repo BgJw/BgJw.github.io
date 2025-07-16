@@ -12,17 +12,17 @@ import { fetchClothesForMan, fetchClothesForWoman } from '../../Slices/ProductSl
 const MainContent = () => {
     const { productsMan, productsWoman, activeFilter, statusMan, statusWoman } = useAppSelector(state => state.ProductSlice);
     const dispatch = useAppDispatch();
-    
-    useEffect(()=> {
-        if(activeFilter === 'man'){
-            dispatch(fetchClothesForMan());
-        }
-        else if(activeFilter === 'woman'){
-            dispatch(fetchClothesForWoman());
-        }
-      }, [activeFilter, dispatch]);
+        console.log('rendered');
+    useEffect(() => {
+    if (activeFilter === 'man' && (productsMan.length === 0 && statusMan === Status.idle)) {
+    dispatch(fetchClothesForMan());
+    } else if (activeFilter === 'woman' && (productsWoman.length === 0 && statusWoman === Status.idle)) {
+    dispatch(fetchClothesForWoman());
+    }
+    }, [activeFilter, dispatch, productsMan.length, productsWoman.length, statusMan, statusWoman]);
 
-    
+
+
 
     const filterProduct = (products: IClothesService[]): JSX.Element[] => {
         return products.map( (product, i) => (
@@ -48,8 +48,8 @@ const MainContent = () => {
                 {statusMan === Status.loading || statusWoman === Status.loading
                     ? renderSkeletons()
                     : activeFilter === 'man'
-                    ? statusMan === Status.idle && filterProduct(productsMan)
-                    : statusWoman === Status.idle && filterProduct(productsWoman)}
+                    ? statusMan === Status.success  && filterProduct(productsMan)
+                    : statusWoman === Status.success  && filterProduct(productsWoman)}
             </div>
         </main>
     );

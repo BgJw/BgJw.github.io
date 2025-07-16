@@ -1,4 +1,3 @@
-import React from 'react';
 import { Name } from '../../types/Types';
 import { useAppDispatch, useAppSelector } from '../../Hooks/useDispatch_Selector';
 import { changeActiveFilter } from '../../Slices/ProductSlice';

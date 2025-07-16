@@ -46,6 +46,7 @@
     }
 
     &__products {
+        overflow: visible; // <-- важно!
         display: grid;
         grid-template-columns: repeat(auto-fit, 240px);
         grid-row-gap: 45px;

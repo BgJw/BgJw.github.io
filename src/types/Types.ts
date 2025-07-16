@@ -77,5 +77,6 @@ export type Name = 'man' | 'woman';
 export enum Status {
     idle = 'idle',
     loading = 'loading',
+    success = 'success',
     error = 'error',
 };

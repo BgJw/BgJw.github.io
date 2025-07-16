@@ -59,8 +59,8 @@ export const PreviewGallerySlice = createSlice({
             state.status = Status.loading;
         })
         .addCase(fetchClothes.fulfilled, (state, action)=> {
-                state.clothesList = action.payload;
-                state.status = Status.idle;
+            state.clothesList = action.payload;
+            state.status = Status.success;
 
         })
         .addCase(fetchClothes.rejected, state => {

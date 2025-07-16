@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import './Products.scss';
 import MyButtons from '../MyButtons/MyButtons';
 import { BadgeType, IClothesService } from '../../types/Types';
+import { memo } from 'react';
 
 interface IProduct {
     product: IClothesService,
     i: number
 }
 
-const Products = ({ product, i }: IProduct) => {
-
+const Products = memo(({ product, i }: IProduct) => {
     return (
         <div className='product'>
             <div className='product__img'>
@@ -29,7 +29,7 @@ const Products = ({ product, i }: IProduct) => {
                         alt={product.alt_description}
                         width={200}
                         height={300}
-                        loading={ i < 6 ? 'eager' : 'lazy'}
+                        loading={ i < 10 ? 'eager' : 'lazy'}
                     />
                 </Link>
             </div>
@@ -43,6 +43,6 @@ const Products = ({ product, i }: IProduct) => {
             </div>
         </div>
     );
-};
+});
 
 export default Products;

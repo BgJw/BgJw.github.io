@@ -1,7 +1,6 @@
 .product {
     display: grid;
     grid-template-rows: 1fr 90px;
-
     &__img {
         position: relative;
         cursor: pointer;

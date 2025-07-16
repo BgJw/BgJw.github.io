@@ -42,7 +42,7 @@ export const ProductSlice = createSlice({
         })
             .addCase(fetchClothesForMan.fulfilled, (state, action) => {
                 state.productsMan = action.payload;
-                state.statusMan = Status.idle;
+                state.statusMan = Status.success ;
         })
             .addCase(fetchClothesForMan.rejected, state => {
                 state.statusMan = Status.error
@@ -53,7 +53,7 @@ export const ProductSlice = createSlice({
         })
             .addCase(fetchClothesForWoman.fulfilled, (state, action) => {
                 state.productsWoman = action.payload;
-                state.statusWoman = Status.idle;
+                state.statusWoman = Status.success ;
         })
             .addCase(fetchClothesForWoman.rejected, state => {
                 state.statusWoman = Status.error
